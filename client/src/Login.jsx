@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
     
 
 
@@ -13,7 +13,7 @@ function Login(){
 
     const loginUser = async (e) =>{
         e.prevenDefault();
-        axios.post('#', {email, password})
+        axios.post('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/login', {email, password})
         .then(result => {console.log(result)
             navigate('/dashboard')
         })
@@ -40,10 +40,10 @@ function Login(){
                            name="email"
                            className="form-control rounded-0"
                            onChange={(e) => setEmail(e.target.value)}
-                           />
+                           required/>
                        </div>
                        <div className="mb-3">
-                           <label htmlFor="email">
+                           <label htmlFor="password">
                                <strong>Password</strong>
                            </label>
                            <input
@@ -53,13 +53,14 @@ function Login(){
                            name="email"
                            className="form-control rounded-0"
                            onChange={(e) => setPassword(e.target.value)}
-                           />      
+                          required/>      
                        </div>         
-                       <button type="submit" className="btn btn-success w-100 rounded">Login</button>
-                       </form>                         
+                       <button type="submit" className="btn btn-success w-100 rounded bold">Login</button>
+                       </form>  
+                       <p>Create an Account!</p>
+                <Link to="/register" className="btn btn-default boarder w-100 bg-light rounded-0 text-decoration-none bold">Register</Link>                   
                </div>
            </div>
-
  );
     
 }
