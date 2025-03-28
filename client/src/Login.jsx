@@ -13,7 +13,7 @@ function Login(){
 
     const loginUser = async (e) =>{
         e.prevenDefault();
-        axios.post('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/login', {email, password})
+        axios.post('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api', {email, password})
         .then(result => {console.log(result)
             navigate('/dashboard')
         })
