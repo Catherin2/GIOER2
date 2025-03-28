@@ -15,7 +15,7 @@ function Register(){
         e.preventDefault();
         axios.post('#', {name, email, password})
         .then(result => {console.log(result)
-            navigate('#')
+            navigate('./login')
         })
         .catch(err => console.log(err))
         
