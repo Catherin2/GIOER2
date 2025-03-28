@@ -25,7 +25,7 @@ function Dashboard(){
     // Search functionality
     const handleSearch = (e) => {
         e.preventDefault();
-        console.log('searching for :' searchTerm);
+        console.log('searching for :', searchTerm);
 
     };   
     
