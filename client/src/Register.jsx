@@ -65,10 +65,10 @@ function Register(){
                     onChange={(e) => setPassword(e.target.value)}
                     required/>
                 </div>             
-                <button type="submit" className="btn btn-success w-100 rounded bold">Register</button>
+                <button type="submit" className="btn btn-success w-100 rounded">Register</button>
                 </form>
                 <p>Already Have an Account?</p>
-                <Link to="/login" className="btn btn-default boarder w-100 bg-light rounded-0 text-decoration-none bold">Login</Link>
+                <Link to="/login" className="btn btn-default boarder w-100 bg-light rounded-0 text-decoration-none">Login</Link>
             
         </div>
     </div>   
