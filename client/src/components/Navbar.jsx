@@ -6,13 +6,9 @@ function Navbar(){
 
     return(
         <nav className="navbar bg-body-tertiary">
-        <div className="container-fluid">
-            <a className="nav-band">
-            <img src="./logo.png"  width="30" height="24" class="d-inline-block align-text-top p-1" alt="" />
-            Group 5: GNU Image Online Extension Repository
-
-            </a>
-
+        <div className="container-fluid">    
+            <img src="./logo.png"  width="30" height="24" class="d-inline-block align-text-top" alt="" />
+            <span>Group 5: GNU Image Online Extension Repository</span>
         </div>
         
         </nav>

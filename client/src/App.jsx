@@ -1,5 +1,4 @@
 import React from 'react';
-import {BrowserRouter, Routes, Route} from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './Register';
 import Login from './Login';
@@ -11,7 +10,6 @@ import Navbar from './components/Navbar';
 
 function App() {
   
-
   return (
     <div className='App'>
       <Navbar/>
@@ -26,7 +24,7 @@ function App() {
 
     </div>
         
-  )
+  );
 }
 
 export default App
