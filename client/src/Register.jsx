@@ -13,7 +13,7 @@ function Register(){
 
     const registerUser = async (e) =>{
         e.preventDefault();
-        axios.post('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/register', {name, email, password})
+        axios.post('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/register',{name, email, password} )
         .then(result => {console.log(result)
             navigate('./login')
         })
@@ -27,17 +27,17 @@ function Register(){
             <h2>Register</h2>
             <form onSubmit={registerUser}>
                 <div className="mb-3">
-                    <label htmlFor="email">
+                    <label htmlFor="text">
                         <strong>Name</strong>
                     </label>
                     <input
                     type= "text"
                     placeholder="name..."
                     autoComplete="off"
-                    name="email"
+                    name="name"
                     className="form-control rounded-0"
                     onChange={(e) => setName(e.target.value)}
-                    />
+                    required/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="email">
@@ -50,10 +50,10 @@ function Register(){
                     name="email"
                     className="form-control rounded-0"
                     onChange={(e) => setEmail(e.target.value)}
-                    />
+                    required/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="email">
+                    <label htmlFor="password">
                         <strong>Password</strong>
                     </label>
                     <input
@@ -63,12 +63,12 @@ function Register(){
                     name="email"
                     className="form-control rounded-0"
                     onChange={(e) => setPassword(e.target.value)}
-                    />
+                    required/>
                 </div>             
-                <button type="submit" className="btn btn-success w-100 rounded">Register</button>
+                <button type="submit" className="btn btn-success w-100 rounded bold">Register</button>
                 </form>
                 <p>Already Have an Account?</p>
-                <Link to="/login" className="btn btn-default boarder w-100 bg-light rounded-0 text-decoration-none">Login</Link>
+                <Link to="/login" className="btn btn-default boarder w-100 bg-light rounded-0 text-decoration-none bold">Login</Link>
             
         </div>
     </div>   
