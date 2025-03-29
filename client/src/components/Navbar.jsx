@@ -5,13 +5,10 @@ import React from "react";
 function Navbar(){
 
     return(
-        <nav className="navbar bg-body-tertiary">
-        <div className="container-fluid">    
-            <img src="./logo.png"  width="30" height="24" class="d-inline-block align-text-top" alt=""/>
-            <span className="fw-bold">Group 5: GNU Image Online Extension Repository</span>
-        </div>
-        
-        </nav>
+        <div className='d-flex justify-content-center py-2 shadow-sm fs-5 fw-bold'>
+	<img src="./logo.png"  width="30" height="24" class="d-inline-block align-text-top p-1" alt=""/>
+      Group 5: GNU Image Online Extension Repository
+    </div>     
         
     )
 }
