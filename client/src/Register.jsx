@@ -5,9 +5,9 @@ import axios from 'axios';
 
 function Register(){
 
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
 
@@ -18,7 +18,7 @@ function Register(){
              {headers: {'Content-Type': 'application/json','Authorization': 'Bearer YOUR_ACCESS_TOKEN',
         }
       })
-        .then(result => {console.log(result)
+        .then(result => {console.log(result);
             navigate('/login/:id');
         })
         .catch(err => console.log(err));
