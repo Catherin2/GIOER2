@@ -1,19 +1,19 @@
 import {useState} from 'react'
 import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
     
 
 
 
 function Login(){
-
+    const {id} = useParams();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const navigate = useNavigate
+    const navigate = useNavigate();
 
     const loginUser = async (e) =>{
         e.prevenDefault();
-        axios.post('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api', {email, password})
+        axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/spec#/users/UserController_login'+id, {email, password})
         .then(result => {console.log(result)
             navigate('/dashboard')
         })
