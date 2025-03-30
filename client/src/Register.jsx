@@ -1,6 +1,6 @@
-import {useState} from 'react'
+import {useState} from 'react';
 import {Link, useNavigate } from "react-router-dom";
-import axios from 'axios'
+import axios from 'axios';
 
 
 function Register(){
@@ -8,17 +8,18 @@ function Register(){
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
 
     const registerUser = async (e) =>{
         e.preventDefault();
-        axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/spec#/users/UserController_createUser/api',{name, email, password},
+        axios
+        .post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/spec#/users/UserController_createUser/api/',{name, email, password},
              {headers: {'Content-Type': 'application/json','Authorization': 'Bearer YOUR_ACCESS_TOKEN',
-        },
+        }
       })
         .then(result => {console.log(result)
-            navigate('./login')
+            navigate('/login/:id');
         })
         .catch(err => console.log(err));
         
@@ -71,7 +72,7 @@ function Register(){
                 <button type="submit" className="btn btn-success w-100 rounded">Register</button>
                 </form>
                 <p>Already Have an Account?</p>
-                <Link to="/login" className="btn btn-default boarder w-100 bg-light rounded-0 text-decoration-none">Login</Link>
+                <Link to="/login/:id" className="btn btn-default boarder w-100 bg-light rounded-0 text-decoration-none">Login</Link>
             
         </div>
     </div>   
