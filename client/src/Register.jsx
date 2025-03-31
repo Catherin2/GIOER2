@@ -16,7 +16,7 @@ function Register(){
         axios
         .post('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/'
          ,{name, email, password},
-             {headers: {'Content-Type': 'application/json','Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+             {headers: {'Content-Type': 'application/json'
         }
       })
         .then(result => {console.log(result);
