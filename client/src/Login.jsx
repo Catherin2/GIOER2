@@ -16,12 +16,13 @@ function Login(){
     const loginUser = async (e) =>{
         e.prevenDefault();
         axios
-        .post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/spec#/users/UserController_login/api/login'+id, 
+        .post('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login/'+ id,
             {email, password},{headers: {'Content-Type': 'application/json','Authorization': 'Bearer YOUR_ACCESS_TOKEN',
             }
           })
         .then(result => {console.log(result);
             navigate('/dashboard');
+            window.location.reload();
         })
         .catch(err => console.log(err));
     }
