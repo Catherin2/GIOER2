@@ -27,7 +27,7 @@ function Upload(){
         <Container>
             {/* Navbar*/}
             <Navbar bg="white m-4 nav flex-column">
-                <Navbar.Brand href = "#" > Upload Service </Navbar.Brand>
+                <Navbar.Brand> Upload Service </Navbar.Brand>
             </Navbar>
 
             <Row className="mt-4 bg-white">
