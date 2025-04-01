@@ -21,8 +21,7 @@ function Register(){
       })
         .then(result => {console.log(result);
             navigate('/login/:id');
-            window.location.reload();
-
+            
         })
         .catch(err => console.log(err.message));
         

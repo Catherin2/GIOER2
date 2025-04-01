@@ -21,8 +21,7 @@ function Login(){
             }
           })
         .then(result => {console.log(result);
-            navigate('/service');
-            window.location.reload();
+            navigate('/service');       
         })
         .catch(err => console.log(err.message));
     }
