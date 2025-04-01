@@ -24,7 +24,7 @@ function Register(){
             window.location.reload();
 
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(err.message));
         
     }
 
