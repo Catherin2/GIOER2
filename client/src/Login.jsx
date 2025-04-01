@@ -21,10 +21,10 @@ function Login(){
             }
           })
         .then(result => {console.log(result);
-            navigate('/dashboard');
+            navigate('/service');
             window.location.reload();
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(err.message));
     }
 
 
