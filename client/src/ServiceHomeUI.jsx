@@ -33,9 +33,9 @@ const ServiceHomeUI = () => {
         <Col md={2} className="d-flex flex-column align-items-start">
           <Button onClick={fetchResources} variant="secondary" className="mb-2 w-100">Resource</Button>
           <Button variant="secondary" className="mb-2 w-100">Search</Button>
+          <Button variant="secondary" className="mb-2 w-100">Creation</Button>
           <Button variant="secondary" className="mb-2 w-100">Upload</Button>
-          <Button variant="secondary" className="mb-2 w-100">Download</Button>
-          <Button variant="secondary" className="mb-2 w-100">plugin</Button>
+          <Button variant="secondary" className="mb-2 w-100">Download</Button>  
         </Col>
 
         {/*Main Content */}
