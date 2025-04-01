@@ -1,49 +1,49 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Button, Card, Navbar, Form} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate, useParams} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import axios from "axios";
 
 
 
-function Upload(){
+function Creation(){
 // State variable
 
-    const {id} = useParams();
 
     const [values, setValues] = useState({
-    fileName: "",
-    fileUrl:"",
-    upLoadDate:""
+    title: "",
+    description:"",
+    category:"",
+    tags:"",
     });
 
     const navigate = useNavigate();
 
     
-    // Function to upload files (extensions)
+    // Function to create (extensions)
 
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-          .post("",+id, values,
+          .post("",values,
             {headers: {'Content-Type': 'application/json'
             }
           }
           )
           .then((res) => {
             console.log(res);
-            navigate("/upload");
+            navigate("/create");
           })
           .catch((err) => console.log(err))
       }
       useEffect(() => { 
         axios
-          .get(""+id)
+          .get("", values)
           .then((res) => setValues({
-            ...values, id:res.data.id,
-             fileName:res.data.fileName, 
-             fileUrl:res.data.fileUrl,
-             upLoadDate:res.data.upLoadDate})
+            ...values, title:res.data.id,
+             description:res.data.fileName, 
+             category:res.data.fileUrl,
+             tags:res.data.upLoadDate})
           )
           .catch((err) => console.log(err));
       }, []);
@@ -54,7 +54,7 @@ function Upload(){
         <Container>
             {/* Navbar*/}
             <Navbar bg="white m-4 nav flex-column">
-                <Navbar.Brand> Upload Service </Navbar.Brand>
+                <Navbar.Brand> Creation Service </Navbar.Brand>
             </Navbar>
 
             <Row className="mt-4 bg-white">
@@ -76,26 +76,26 @@ function Upload(){
                 <Col md ={9}>
                 <Card>
                 <Card.Body>
-                    <h5>File Upload Form</h5>
+                    <h5>New Extension Form</h5>
                 </Card.Body>
                 <Card>              
               <div>
                  <form onSubmit={handleSubmit}>
     <div className="mb-3">
-    <label htmlFor="ID" className="form-label">ID</label>
+    <label htmlFor="title" className="form-label">Title</label>
     <input type="int" className="form-control" id="InputID" aria-describedby="emailHelp"></input>
     <div id="id" className="form-text"></div>
     </div>
      <div className="mb-3">
-    <label htmlFor="title" className="form-label">FileName</label>
-    <input type="text" className="form-control" id="InputTitle"></input>
+    <label htmlFor="descrip" className="form-label">Description</label>
+    <input type="textarea" className="form-control" id="InputDescrip"></input>
      </div>
      <div className="mb-3">
-    <label htmlFor="fileUrl" className="form-label">FileUrl</label>
+    <label htmlFor="category" className="form-label">Category</label>
     <input type="text" className="form-control" id="InputDescription"></input>
      </div>
      <div className="mb-3">
-    <label htmlFor="upLoadDate" className="form-label">UploadDate</label>
+    <label htmlFor="tag" className="form-label">Tags</label>
     <input type="text" className="form-control" id="InputDescription"></input>
     </div>
     <button type="submit" className="btn btn-success rounded">Submit</button>
@@ -111,4 +111,4 @@ function Upload(){
     );
 }
 
-export default Upload;
+export default Creation;

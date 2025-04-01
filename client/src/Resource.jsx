@@ -1,7 +1,6 @@
-import React from 'react'
 import React, {useState} from 'react';
 import {Container, Row, Col, Button, Card, Navbar, Form} from 'react-bootstrap';
-import "bootstrap/dist/css/bootstrap.min.css";
+
 
 
 const Resource = () => {

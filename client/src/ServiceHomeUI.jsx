@@ -51,9 +51,10 @@ const ServiceHomeUI = () => {
           <div className="text-center mt-4">
             <h4>Welcome</h4>
             <Card className="p-3 mt-3 mx-auto" style={{maxWidth:"500px"}}>
-              <h5>GIMP_Plus Services list:</h5>
-              <p><strong>Resource Catalogue Service:</strong>provides API for resources management</p>
+              <h5>GIOER Services list:</h5>
+              <p><strong>Resource Catalogue Service:</strong>provides API for resources management</p>  
               <p><strong>Search Service:</strong>Provides Search and Filter Service</p>
+              <p><strong>Creation Service:</strong>Provide creation of new extension</p>
               <p><strong>File Upload Service:</strong>Uploading resources and storing of files.</p>
               <p><strong>Download Service:</strong>Provide files download Service</p>
             </Card>
@@ -78,7 +79,7 @@ const ServiceHomeUI = () => {
        {/* Footer */}
        <footer className="text-center mt-4 p-3 border-top">
         <a href="#">Home</a> | <a href="#">Contact</a> | <a href="#">Help</a>
-        <p className="mt-2">GIMP_Plus 2025</p>
+        <p className="mt-2">GIOER 2025</p>
        </footer>
     </Container>
   );
