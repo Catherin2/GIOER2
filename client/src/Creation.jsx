@@ -98,7 +98,7 @@ function Creation(){
     <label htmlFor="tag" className="form-label">Tags</label>
     <input type="text" className="form-control" id="InputDescription"></input>
     </div>
-    <button type="submit" className="btn btn-success rounded">Submit</button>
+    <button type="submit" className="btn btn-success rounded">Save</button>
     </form>
                     </div>
                 </Card>
