@@ -98,7 +98,7 @@ function Upload(){
     <label htmlFor="upLoadDate" className="form-label">UploadDate</label>
     <input type="text" className="form-control" id="InputDescription"></input>
     </div>
-    <button type="submit" className="btn btn-success rounded">Submit</button>
+    <button type="submit" className="btn btn-success rounded">Upload</button>
     </form>
                     </div>
                 </Card>
