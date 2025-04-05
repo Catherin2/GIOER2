@@ -6,6 +6,7 @@ import axios from "axios";
 
 
 
+
 function Upload(){
 // State variable
 
@@ -25,25 +26,25 @@ function Upload(){
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-          .post("",+id, values,
+          .post("http://3.148.177.194/api/file/upload",+id, values,
             {headers: {'Content-Type': 'application/json'
             }
           }
           )
           .then((res) => {
-            console.log(res);
-            navigate("/upload");
+            console.log(res);  
           })
           .catch((err) => console.log(err))
       }
       useEffect(() => { 
         axios
-          .get(""+id)
+          .get("http://3.148.177.194/api/file/upload"+id)
           .then((res) => setValues({
             ...values, id:res.data.id,
              fileName:res.data.fileName, 
              fileUrl:res.data.fileUrl,
-             upLoadDate:res.data.upLoadDate})
+             upLoadDate:res.data.upLoadDate}), 
+             window.location.reload()
           )
           .catch((err) => console.log(err));
       }, []);
@@ -62,6 +63,7 @@ function Upload(){
                 <Col md={2}>
                     <Card >
                         <Card.Body>
+                      
                             <Button variant="secondary" className="mb-2 w-100">Home</Button>
                             <Button variant="secondary" className="mb-2 w-100">Resource</Button>
                             <Button variant="secondary" className="mb-2 w-100">Creation</Button>
@@ -91,12 +93,12 @@ function Upload(){
     <input type="text" className="form-control" id="InputTitle"></input>
      </div>
      <div className="mb-3">
-    <label htmlFor="fileUrl" className="form-label">FileUrl</label>
-    <input type="text" className="form-control" id="InputDescription"></input>
+    <label htmlFor="url-field" className="form-label">FileUrl</label>
+    <input type="url" className="form-control" id="url-field"></input>
      </div>
      <div className="mb-3">
     <label htmlFor="upLoadDate" className="form-label">UploadDate</label>
-    <input type="text" className="form-control" id="InputDescription"></input>
+    <input type="date" className="form-control" id="uploadDate"></input>
     </div>
     <button type="submit" className="btn btn-success rounded">Upload</button>
     </form>
