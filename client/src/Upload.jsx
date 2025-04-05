@@ -30,7 +30,8 @@ function Upload(){
           }
           )
           .then((res) => {
-            console.log(res);  
+            console.log(res); 
+            window.location.reload();
           })
           .catch((err) => console.log(err))
       }
@@ -42,7 +43,7 @@ function Upload(){
              fileName:res.data.fileName, 
              fileUrl:res.data.fileUrl,
              upLoadDate:res.data.upLoadDate}), 
-             window.location.reload()
+             
           )
           .catch((err) => console.log(err));
       }, []);
@@ -58,12 +59,12 @@ function Upload(){
                 <Col md={2}>
                     <Card >
                         <Card.Body>                
-                            <Button variant="secondary" className="mb-2 w-100">Home</Button>
-                            <Button variant="secondary" className="mb-2 w-100">Resource</Button>
-                            <Button variant="secondary" className="mb-2 w-100">Creation</Button>
-                            <Button variant="secondary" className="mb-2 w-100">Search</Button>
-                            <Button variant="secondary" className="mb-2 w-100">Upload</Button> 
-                            <Button variant="secondary" className="mb-2 w-100">Download</Button>
+                            <Button variant="secondary" href="service" className="mb-2 w-100">Home</Button>
+                            <Button variant="secondary" href="#" className="mb-2 w-100">Resource</Button>
+                            <Button variant="secondary" href="creation" className="mb-2 w-100">Creation</Button>
+                            <Button variant="secondary" href="#" className="mb-2 w-100">Search</Button>
+                            <Button variant="secondary" href="upload" className="mb-2 w-100">Upload</Button> 
+                            <Button variant="secondary" href="#"className="mb-2 w-100">Download</Button>
                        </Card.Body>    
                     </Card>
                 </Col>
