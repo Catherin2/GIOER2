@@ -18,9 +18,7 @@ function Upload(){
     upLoadDate:""
     });
 
-    const navigate = useNavigate();
-
-    
+    const navigate = useNavigate();  
     // Function to upload files (extensions)
 
     const handleSubmit = (e) => {
@@ -48,9 +46,6 @@ function Upload(){
           )
           .catch((err) => console.log(err));
       }, []);
-
-    
-
     return(
         <Container>
             {/* Navbar*/}
@@ -62,8 +57,7 @@ function Upload(){
                 {/* Sidebar */}
                 <Col md={2}>
                     <Card >
-                        <Card.Body>
-                      
+                        <Card.Body>                
                             <Button variant="secondary" className="mb-2 w-100">Home</Button>
                             <Button variant="secondary" className="mb-2 w-100">Resource</Button>
                             <Button variant="secondary" className="mb-2 w-100">Creation</Button>
@@ -107,8 +101,7 @@ function Upload(){
                 </Card>
                 </Col>                    
             </Row>
-        </Container>
-        
+        </Container>       
 
     );
 }
