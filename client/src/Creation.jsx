@@ -25,20 +25,24 @@ function Creation(){
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-          .post("",values,
+          .post("https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/spec#/extensions/ExtensionController_createExtension",values,
             {headers: {'Content-Type': 'application/json'
             }
           }
           )
           .then((res) => {
             console.log(res);
-            navigate("/create");
+            window.location.reload;
           })
           .catch((err) => console.log(err))
       }
       useEffect(() => { 
         axios
-          .get("", values)
+          .get("https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/spec#/extensions/ExtensionController_createExtension", values, 
+            {headers: {'Content-Type': 'application/json'
+            }
+          }
+          )
           .then((res) => setValues({
             ...values, title:res.data.id,
              description:res.data.fileName, 
@@ -62,12 +66,12 @@ function Creation(){
                 <Col md={2}>
                     <Card >
                         <Card.Body>
-                            <Button variant="secondary" className="mb-2 w-100">Home</Button>
-                            <Button variant="secondary" className="mb-2 w-100">Resource</Button>
-                            <Button variant="secondary" className="mb-2 w-100">Creation</Button>
-                            <Button variant="secondary" className="mb-2 w-100">Search</Button>
-                            <Button variant="secondary" className="mb-2 w-100">Upload</Button> 
-                            <Button variant="secondary" className="mb-2 w-100">Download</Button>
+                            <Button variant="secondary" href="service" className="mb-2 w-100">Home</Button>
+                            <Button variant="secondary" href="#" className="mb-2 w-100">Resource</Button>
+                            <Button variant="secondary" href="create" className="mb-2 w-100">Creation</Button>
+                            <Button variant="secondary" href="#" className="mb-2 w-100">Search</Button>
+                            <Button variant="secondary" href="upload" className="mb-2 w-100">Upload</Button> 
+                            <Button variant="secondary" href="#" className="mb-2 w-100">Download</Button>
                        </Card.Body>    
                     </Card>
                 </Col>
