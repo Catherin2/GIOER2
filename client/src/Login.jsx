@@ -18,10 +18,10 @@ function Login(){
             {email, password},{headers: {'Content-Type': 'application/json'
             }
           })
-        .then(result => {console.log(result);
-            navigate('/dashboard');  
-        })
-        .catch(err => console.log(err));
+          .then(res =>{
+            console.log(res);
+            navigate('/dashboard');
+        }).catch(err => console.log(err));
     }  
  return(
     <div className="d-flex justify-content-center align-items-center bg-secondary
@@ -51,7 +51,7 @@ function Login(){
                            placeholder="password..."
                            autoComplete="off"
                            name="password"
-                           id="user-password"
+                           id="password"
                            className="form-control rounded-0"
                            onChange={(e) => setPassword(e.target.value)}
                           required/>      
