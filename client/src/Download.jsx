@@ -5,7 +5,7 @@ const Download = () => {
     const [id, setId] = useState('');
 
     const handleDownload = () => {
-        axios.get(`http://3.148.177.194/api/file/download/67ece64eae12078de2411abe/api/file/download/${id}`)    //`/api/file/download/${id}`
+        axios.get(`http://3.148.177.194/spec#/File/FileController_downloadFile${id}`)    //`/api/file/download/${id}`
         .then(response =>{
             const url = URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
