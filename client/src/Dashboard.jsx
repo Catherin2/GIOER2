@@ -4,6 +4,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
+  const [data, setData] = useState([]);
+  const [currentView, setCurrentView] = useState('');
+
+  const fetchResources = async () =>{
+    const mockData = [
+      {id:1, name:"Resource A", description: "This is resource A"},
+      {id:2, name:"Resource B", description:"This is resource B"},
+    ];
+
+    setTimeout(()=>{
+      setData(mockData);
+      setCurrentView('resources');
+    }, 500);
+  }
   
   return(
     <Container fluid>
