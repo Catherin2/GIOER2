@@ -17,13 +17,8 @@ const Dashboard = () => {
       setData(mockData);
       setCurrentView('resources');
     }, 500);
-<<<<<<< HEAD
   }
   
-=======
-  };
-
->>>>>>> 14e348e9a3c0d9b78021e8b8e1d95ed4284f182a
   return(
     <Container fluid>
       {/*Navbar*/}
