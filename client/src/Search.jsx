@@ -6,7 +6,7 @@ const Search = () => {
     const [extension, setExtension] = useState(null);
 
     const handleSearch = () => {
-        axios.get(`/api/extensions/${id}`)
+        axios.get(`https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/spec#/extensions/ExtensionController_getExtension/${id}`)
         .then(response => setExtension(response.data))
         .catch(error => console.error('Error fetching extension:', error));
     };
