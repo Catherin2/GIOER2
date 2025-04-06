@@ -35,9 +35,10 @@ const Dashboard = () => {
          {/* <Button onClick={fetchResources} variant="secondary" className="mb-2 w-100">Resource</Button> */}
           <Link to="/resource" className="btn btn-secondary mb-2 w-100">Resource</Link>
           <Link to="/search" className="btn btn-secondary mb-2 w-100">Search</Link>
+          <Link to="/extension" className="btn btn-secondary mb-2 w-100">Extension</Link> 
           <Link to="/upload" className="btn btn-secondary mb-2 w-100">Upload</Link>
           <Link to="/download" className="btn btn-secondary mb-2 w-100">Download</Link>
-          <Link to="/extension" className="btn btn-secondary mb-2 w-100">Extension</Link> 
+        
         </Col>
 
         {/*Main Content */}
