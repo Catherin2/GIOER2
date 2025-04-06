@@ -13,7 +13,7 @@ const Resource = () => {
    // Function to fetch resources (extensions)
    const fetchResources = async () => {
        try{
-           const response =await fetch('/api/extensions')
+           const response =await fetch('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/spec#/extensions/ExtensionController_getAllExtension')
            const data = await response.json();
            setResources(data);
            setIsResourceClicked(true);
