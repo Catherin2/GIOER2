@@ -8,8 +8,6 @@ import axios from "axios";
 
 function Creation(){
 // State variable
-
-
     const [values, setValues] = useState({
     title: "",
     description:"",
@@ -47,7 +45,7 @@ function Creation(){
                 <Col md={2}>
                     <Card >
                         <Card.Body>
-                            <Button variant="secondary" href="dashboard" className="mb-2 w-100">Dashbaord</Button>
+                            <Button variant="secondary" href="dashboard" className="mb-2 w-100">Dashboard</Button>
                        </Card.Body>    
                     </Card>
                 </Col>
