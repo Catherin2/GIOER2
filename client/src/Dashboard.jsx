@@ -1,29 +1,15 @@
-import React, {useState} from "react";
+import React from "react";
 import { Container, Row, Col, Button, Card, Navbar, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
-  const [data, setData] = useState([]);
-  const [currentView, setCurrentView] = useState('');
-
-  const fetchResources = async () =>{
-    const mockData = [
-      {id:1, name:"Resource A", description: "This is resource A"},
-      {id:2, name:"Resource B", description:"This is resource B"},
-    ];
-
-    setTimeout(()=>{
-      setData(mockData);
-      setCurrentView('resources');
-    }, 500);
-  };
-
+  
   return(
     <Container fluid>
       {/*Navbar*/}
       <Navbar bg="light" className="justify-content-between p-2 border">
-       <Navbar.Brand>Service Home UI</Navbar.Brand>
+       <Navbar.Brand>Dashboard</Navbar.Brand>
        <div>
         <span>User[name]</span>
        </div>
@@ -35,7 +21,7 @@ const Dashboard = () => {
          {/* <Button onClick={fetchResources} variant="secondary" className="mb-2 w-100">Resource</Button> */}
           <Link to="/resource" className="btn btn-secondary mb-2 w-100">Resource</Link>
           <Link to="/search" className="btn btn-secondary mb-2 w-100">Search</Link>
-          <Link to="/extension" className="btn btn-secondary mb-2 w-100">Extension</Link> 
+          <Link to="/create" className="btn btn-secondary mb-2 w-100">Creation</Link> 
           <Link to="/upload" className="btn btn-secondary mb-2 w-100">Upload</Link>
           <Link to="/download" className="btn btn-secondary mb-2 w-100">Download</Link>
         
@@ -44,7 +30,7 @@ const Dashboard = () => {
         {/*Main Content */}
         <Col md ={10}>
           <div className="d-flex justify-content-between">
-            <h5>public/logo.png</h5>
+            <h5>Welcome!</h5>
             <Form className="d-flex">
               <Form.Control type="search" placeholder="Search" className="me-2" />
               <Button variant="outline-primary">Search</Button>
@@ -71,6 +57,6 @@ const Dashboard = () => {
        </footer>
     </Container>
   );
-};
+}
 
 export default Dashboard;

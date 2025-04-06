@@ -1,14 +1,12 @@
 import {useState} from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { useParams } from "react-router";
-    
+
 
 
 
 function Login(){
     
-    const id = useParams.id;
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -16,20 +14,16 @@ function Login(){
     const loginUser = async (e) =>{
         e.prevenDefault();
         axios
-        .post('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login/'+ id,
+        .post('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login/',
             {email, password},{headers: {'Content-Type': 'application/json'
             }
           })
         .then(result => {console.log(result);
-            navigate('/service');       
+            navigate('/dashboard');  
         })
-        .catch(err => console.log(err.message));
-    }
-
-
-
+        .catch(err => console.log(err));
+    }  
  return(
-
     <div className="d-flex justify-content-center align-items-center bg-secondary
     vh-100">       
           <div className="bg-white p-3 rounded w-25">
@@ -56,7 +50,8 @@ function Login(){
                            type= "password"
                            placeholder="password..."
                            autoComplete="off"
-                           name="email"
+                           name="password"
+                           id="user-password"
                            className="form-control rounded-0"
                            onChange={(e) => setPassword(e.target.value)}
                           required/>      

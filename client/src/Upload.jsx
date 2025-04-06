@@ -10,43 +10,32 @@ import axios from "axios";
 function Upload(){
 // State variable
 
-    const {id} = useParams();
-
     const [values, setValues] = useState({
     fileName: "",
     fileUrl:"",
     upLoadDate:""
     });
-
+      const handleValues= (e) =>{
+        setValues(e.target.values[0])
+      }
     const navigate = useNavigate();  
     // Function to upload files (extensions)
 
-    const handleSubmit = (e) => {
+    const handleUpload = (e) => {
         e.preventDefault();
+        const formdata = FormData();
+        formdata.append('url', values);
         axios
-          .post("http://3.148.177.194/api/file/upload",+id, values,
+          .post("http://3.148.177.194/api/file/upload", formdata,
             {headers: {'Content-Type': 'application/json'
-            }
-          }
-          )
+            }})
           .then((res) => {
-            console.log(res); 
-            window.location.reload();
+            console.log(res);
+            windows.location.reload();
           })
-          .catch((err) => console.log(err))
-      }
-      useEffect(() => { 
-        axios
-          .get("http://3.148.177.194/api/file/upload"+id)
-          .then((res) => setValues({
-            ...values, id:res.data.id,
-             fileName:res.data.fileName, 
-             fileUrl:res.data.fileUrl,
-             upLoadDate:res.data.upLoadDate}), 
-             
-          )
           .catch((err) => console.log(err));
-      }, []);
+      }
+      
     return(
         <Container>
             {/* Navbar*/}
@@ -59,12 +48,7 @@ function Upload(){
                 <Col md={2}>
                     <Card >
                         <Card.Body>                
-                            <Button variant="secondary" href="service" className="mb-2 w-100">Home</Button>
-                            <Button variant="secondary" href="#" className="mb-2 w-100">Resource</Button>
-                            <Button variant="secondary" href="creation" className="mb-2 w-100">Creation</Button>
-                            <Button variant="secondary" href="#" className="mb-2 w-100">Search</Button>
-                            <Button variant="secondary" href="upload" className="mb-2 w-100">Upload</Button> 
-                            <Button variant="secondary" href="#"className="mb-2 w-100">Download</Button>
+                            <Button variant="secondary" href="dashboard/:id" className="mb-2 w-100">Dashboard</Button>
                        </Card.Body>    
                     </Card>
                 </Col>
@@ -77,25 +61,25 @@ function Upload(){
                 </Card.Body>
                 <Card>              
               <div>
-                 <form onSubmit={handleSubmit}>
+                 <form>
     <div className="mb-3">
     <label htmlFor="ID" className="form-label">ID</label>
-    <input type="int" className="form-control" id="InputID" aria-describedby="emailHelp"></input>
+    <input type="text" onChange={handleValues} className="form-control" id="InputID" placeholder="ID..." aria-describedby="emailHelp"></input>
     <div id="id" className="form-text"></div>
     </div>
      <div className="mb-3">
     <label htmlFor="title" className="form-label">FileName</label>
-    <input type="text" className="form-control" id="InputTitle"></input>
+    <input type="text" onChange={handleValues} className="form-control" id="InputTitle" placeholder="FileName..."></input>
      </div>
      <div className="mb-3">
     <label htmlFor="url-field" className="form-label">FileUrl</label>
-    <input type="url" className="form-control" id="url-field"></input>
+    <input type="url" onChange={handleValues} className="form-control" id="url-field" placeholder="URL..."></input>
      </div>
      <div className="mb-3">
     <label htmlFor="upLoadDate" className="form-label">UploadDate</label>
-    <input type="date" className="form-control" id="uploadDate"></input>
+    <input type="date" onChange={handleValues} className="form-control" id="uploadDate"></input>
     </div>
-    <button type="submit" className="btn btn-success rounded">Upload</button>
+    <button onClick={handleUpload} className="btn btn-success rounded">Upload</button>
     </form>
                     </div>
                 </Card>

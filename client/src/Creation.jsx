@@ -18,9 +18,8 @@ function Creation(){
     });
 
     const navigate = useNavigate();
-
-    
-    // Function to create (extensions)
+ 
+    // Function create new extensions
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -36,24 +35,6 @@ function Creation(){
           })
           .catch((err) => console.log(err))
       }
-      useEffect(() => { 
-        axios
-          .get("https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/spec#/extensions/ExtensionController_createExtension", values, 
-            {headers: {'Content-Type': 'application/json'
-            }
-          }
-          )
-          .then((res) => setValues({
-            ...values, title:res.data.id,
-             description:res.data.fileName, 
-             category:res.data.fileUrl,
-             tags:res.data.upLoadDate})
-          )
-          .catch((err) => console.log(err));
-      }, []);
-
-    
-
     return(
         <Container>
             {/* Navbar*/}
@@ -66,12 +47,7 @@ function Creation(){
                 <Col md={2}>
                     <Card >
                         <Card.Body>
-                            <Button variant="secondary" href="service" className="mb-2 w-100">Home</Button>
-                            <Button variant="secondary" href="#" className="mb-2 w-100">Resource</Button>
-                            <Button variant="secondary" href="create" className="mb-2 w-100">Creation</Button>
-                            <Button variant="secondary" href="#" className="mb-2 w-100">Search</Button>
-                            <Button variant="secondary" href="upload" className="mb-2 w-100">Upload</Button> 
-                            <Button variant="secondary" href="#" className="mb-2 w-100">Download</Button>
+                            <Button variant="secondary" href="dashboard" className="mb-2 w-100">Dashbaord</Button>
                        </Card.Body>    
                     </Card>
                 </Col>
@@ -87,22 +63,22 @@ function Creation(){
                  <form onSubmit={handleSubmit}>
     <div className="mb-3">
     <label htmlFor="title" className="form-label">Title</label>
-    <input type="int" className="form-control" id="InputID" aria-describedby="emailHelp"></input>
+    <input type="text" className="form-control" id="InputID" placeholder="Title..." onChange={(e) => setValues({...values, title: e.target.value})} aria-describedby="emailHelp"></input>
     <div id="id" className="form-text"></div>
     </div>
      <div className="mb-3">
-    <label htmlFor="descrip" className="form-label">Description</label>
-    <input type="textarea" className="form-control" id="InputDescrip"></input>
+    <label htmlFor="description" className="form-label">Description</label>
+    <input type="textarea" className="form-control" id="InputDescrip" placeholder="Description..." onChange={(e) => setValues({...values, description: e.target.value})}></input>
      </div>
      <div className="mb-3">
     <label htmlFor="category" className="form-label">Category</label>
-    <input type="text" className="form-control" id="InputDescription"></input>
+    <input type="text" className="form-control" id="InputDescription" placeholder="Category..." onChange={(e) => setValues({...values, category: e.target.value})}></input>
      </div>
      <div className="mb-3">
-    <label htmlFor="tag" className="form-label">Tags</label>
-    <input type="text" className="form-control" id="InputDescription"></input>
+    <label htmlFor="tags" className="form-label">Tags</label>
+    <input type="text" className="form-control" id="InputTags" placeholder="Tags..." onChange={(e) => setValues({...values, tags: e.target.value})}></input>
     </div>
-    <button type="submit" className="btn btn-success rounded">Save</button>
+    <button type="submit" className="btn btn-success rounded">Submit</button>
     </form>
                     </div>
                 </Card>
