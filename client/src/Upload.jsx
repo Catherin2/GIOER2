@@ -26,7 +26,7 @@ function Upload(){
         const formdata = FormData();
         formdata.append('url', values);
         axios
-          .post("http://3.148.177.194/api/file/upload", formdata,
+          .post("http://3.148.177.194/spec#/File/FileController_uploadFile", formdata,
             {headers: {'Content-Type': 'application/json'
             }})
           .then((res) => {
