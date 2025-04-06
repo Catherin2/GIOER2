@@ -8,9 +8,9 @@ import Navbar from './components/Navbar';
 import Upload from './Upload';
 import Resource from './Resource';
 import Creation from './Creation';
-
-
-
+import Dashboard from './Dashboard';
+import Search from './Search';
+import Download from './Download';
 
 function App() {
   
@@ -25,6 +25,9 @@ function App() {
         <Route path='/upload' element={<Upload/>}></Route>
         <Route path='/resource' element={<Resource/>}></Route>
         <Route path='/create' element={<Creation/>}></Route>
+        <Route path='/dashboard' element={<Dashboard/>}></Route>
+        <Route path='/search' element={<Search/>}></Route>
+        <Route path='/download' element={<Download/>}></Route>
       </Routes>
       
       </BrowserRouter>
