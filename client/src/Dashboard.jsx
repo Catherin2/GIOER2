@@ -3,7 +3,7 @@ import { Container, Row, Col, Button, Card, Navbar, Form } from "react-bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 
-const ServiceHomeUI = () => {
+const Dashboard = () => {
   const [data, setData] = useState([]);
   const [currentView, setCurrentView] = useState('');
 
@@ -66,10 +66,10 @@ const ServiceHomeUI = () => {
        {/* Footer */}
        <footer className="text-center mt-4 p-3 border-top">
         <a href="#">Home</a> | <a href="#">Contact</a> | <a href="#">Help</a>
-        <p className="mt-2">GIMP_Plus 2025</p>
+        <p className="mt-2">GIOER 2025</p>
        </footer>
     </Container>
   );
 };
 
-export default ServiceHomeUI;
+export default Dashboard;
