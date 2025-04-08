@@ -31,6 +31,7 @@ function Upload(){
             }})
           .then((res) => {
             console.log(res);
+            navigate('/dashboard')
             windows.location.reload();
           })
           .catch((err) => console.log(err));
