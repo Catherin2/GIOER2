@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Button, Card, Navbar, Form} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate} from "react-router-dom";
+//import { useNavigate} from "react-router-dom";
 import axios from "axios";
 
 
@@ -18,7 +18,7 @@ function Creation(){
     
     });
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
  
     // Function create new extensions
 

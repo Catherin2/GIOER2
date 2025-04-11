@@ -16,12 +16,12 @@ function Upload(){
     upLoadDate:""
     });
       const handleValues= (e) =>{
-        setValues(e.target.values[0])
+        setValues(prev =>({...prev, [e.target.fileName]: [e.target.value]}))
       }
     const navigate = useNavigate();  
     // Function to upload files (extensions)
 
-    const handleUpload = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         const formdata = FormData();
         formdata.append('url', values);
@@ -62,7 +62,7 @@ function Upload(){
                 </Card.Body>
                 <Card>              
               <div>
-                 <form>
+                 <form onSubmit={handleSubmit}>
     <div className="mb-3">
     <label htmlFor="ID" className="form-label">ID</label>
     <input type="text" onChange={handleValues} className="form-control" id="InputID" placeholder="ID..." aria-describedby="emailHelp"></input>
@@ -80,7 +80,7 @@ function Upload(){
     <label htmlFor="upLoadDate" className="form-label">UploadDate</label>
     <input type="date" onChange={handleValues} className="form-control" id="uploadDate"></input>
     </div>
-    <button onClick={handleUpload} className="btn btn-success rounded">Upload</button>
+    <button  className="btn btn-success rounded">Submit</button>
     </form>
                     </div>
                 </Card>

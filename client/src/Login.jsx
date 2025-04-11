@@ -12,7 +12,9 @@ function Login(){
         password:''
     });   
     const navigate = useNavigate();
-    axios.defaults.withCredentials = true;
+    const handleInput = (e) =>{
+        setValues(prev =>({...prev, [e.target.email]: [e.target.value]}))
+    }
     const loginUser = async (e) =>{
         e.prevenDefault();
         axios
@@ -45,7 +47,7 @@ function Login(){
                            autoComplete="off"
                            name="email"
                            className="form-control rounded-0"
-                           onChange={(e) => setEmail(e.target.value)}
+                           onChange={handleInput}
                            required/>
                        </div>
                        <div className="mb-3">
@@ -59,7 +61,7 @@ function Login(){
                            name="password"
                            id="password"
                            className="form-control rounded-0"
-                           onChange={(e) => setPassword(e.target.value)}
+                           onChange={handleInput}
                           required/>      
                        </div>         
                        <button type="submit" className="btn btn-success w-100 rounded">Login</button>
