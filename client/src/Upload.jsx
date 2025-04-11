@@ -23,16 +23,19 @@ function Upload(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const formdata = FormData();
+        const formdata = new FormData();
         formdata.append('url', values);
         axios
           .post("http://3.148.177.194/spec#/File/FileController_uploadFile", formdata,
             {headers: {'Content-Type': 'application/json'
             }})
           .then((res) => {
-            console.log(res);
-            navigate('/dashboard')
-            windows.location.reload();
+            if(res.data.status === "Success"){
+              console.log("Succeeded")
+            }else{
+              console.log("Failed")
+            }
+            
           })
           .catch((err) => console.log(err));
       }
