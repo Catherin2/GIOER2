@@ -4,12 +4,11 @@ import axios from 'axios';
 
 
 function Register(){
-
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
+    
 
     const registerUser = async (e) =>{
         e.preventDefault();
@@ -19,12 +18,12 @@ function Register(){
              {headers: {'Content-Type': 'application/json'
         }
       })
-        .then(result => {console.log(result);
-            navigate('/login/:id');
-        })
-        .catch(err => console.log(err.message));       
+      .then(result => {console.log(result);
+        navigate('/login');
+    })
+    .catch(err => console.log(err.message));   
     }
-    return(
+        return(
         <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
         <div className="bg-white p-3 rounded w-25">
             <h2>Register</h2>

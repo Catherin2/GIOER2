@@ -7,20 +7,26 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function Login(){
     
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const[values, setValues] = useState({
+        email:'',
+        password:''
+    });   
     const navigate = useNavigate();
-
+    axios.defaults.withCredentials = true;
     const loginUser = async (e) =>{
         e.prevenDefault();
         axios
         .post('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login/',
-            {email, password},{headers: {'Content-Type': 'application/json'
+            values,{headers: {'Content-Type': 'application/json'
             }
           })
           .then(res =>{
+            if(res.data.values){
+                navigate('/dashboard')
+            }else{
+                alert("No record")
+            }
             console.log(res);
-            navigate('/dashboard');
         }).catch(err => console.log(err));
     }  
  return(
