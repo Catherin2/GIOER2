@@ -18,7 +18,7 @@ function Register(){
              {headers: {'Content-Type': 'application/json'
         }
       })
-      .then(result => {console.log(result);
+      .then(res => {console.log(res);
         navigate('/login');
     })
     .catch(err => console.log(err.message));   

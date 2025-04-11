@@ -9,10 +9,13 @@ import axios from "axios";
 function Creation(){
 // State variable
     const [values, setValues] = useState({
-    title: "",
+        "data":{
+            title: "",
     description:"",
-    category:"",
+    category:[1],
     tags:"",
+        }
+    
     });
 
     const navigate = useNavigate();
@@ -29,7 +32,6 @@ function Creation(){
           )
           .then((res) => {
             console.log(res);
-            window.location.reload;
           })
           .catch((err) => console.log(err))
       }
