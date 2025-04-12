@@ -63,20 +63,20 @@ function Creation(){
                  <form onSubmit={handleSubmit}>
     <div className="mb-3">
     <label htmlFor="title" className="form-label">Title</label>
-    <input type="text" className="form-control" id="InputID" placeholder="Title..." onChange={(e) => setValues({...values, title: e.target.value})} aria-describedby="emailHelp"></input>
+    <input type="text" className="form-control" id="InputID" placeholder="Title..." onChange={(e) => setValues({...values, title: e.target.value})} required aria-describedby="emailHelp"></input>
     <div id="id" className="form-text"></div>
     </div>
      <div className="mb-3">
     <label htmlFor="description" className="form-label">Description</label>
-    <input type="textarea" className="form-control" id="InputDescrip" placeholder="Description..." onChange={(e) => setValues({...values, description: e.target.value})}></input>
+    <input type="textarea" className="form-control" id="InputDescrip" placeholder="Description..." onChange={(e) => setValues({...values, description: e.target.value})} required></input>
      </div>
      <div className="mb-3">
     <label htmlFor="category" className="form-label">Category</label>
-    <input type="text" className="form-control" id="InputDescription" placeholder="Category..." onChange={(e) => setValues({...values, category: e.target.value})}></input>
+    <input type="text" className="form-control" id="InputDescription" placeholder="Category..." onChange={(e) => setValues({...values, category: e.target.value})} required></input>
      </div>
      <div className="mb-3">
     <label htmlFor="tags" className="form-label">Tags</label>
-    <input type="text" className="form-control" id="InputTags" placeholder="Tags..." onChange={(e) => setValues({...values, tags: e.target.value})}></input>
+    <input type="text" className="form-control" id="InputTags" placeholder="Tags..." onChange={(e) => setValues({...values, tags: e.target.value})} required></input>
     </div>
     <button type="submit" className="btn btn-success rounded">Submit</button>
     </form>

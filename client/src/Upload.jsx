@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Button, Card, Navbar, Form} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 
 
@@ -15,27 +14,25 @@ function Upload(){
     fileUrl:"",
     upLoadDate:""
     });
-      const handleValues= (e) =>{
-        setValues(prev =>({...prev, [e.target.fileName]: [e.target.value]}))
-      }
-    const navigate = useNavigate();  
+      
+    
     // Function to upload files (extensions)
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         const formdata = new FormData();
         formdata.append('url', values);
         axios
-          .post("http://3.148.177.194/spec#/File/FileController_uploadFile", formdata,
+          .post("", formdata,
             {headers: {'Content-Type': 'application/json'
             }})
           .then((res) => {
-            if(res.data.status === "Success"){
-              console.log("Succeeded")
+            if(res => setValues(res.data.status) === "Success"){
+              console.log("Succeded")
+              document.body.appendChild(res);
             }else{
               console.log("Failed")
-            }
-            
+            }     
           })
           .catch((err) => console.log(err));
       }
@@ -66,22 +63,17 @@ function Upload(){
                 <Card>              
               <div>
                  <form onSubmit={handleSubmit}>
-    <div className="mb-3">
-    <label htmlFor="ID" className="form-label">ID</label>
-    <input type="text" onChange={handleValues} className="form-control" id="InputID" placeholder="ID..." aria-describedby="emailHelp"></input>
-    <div id="id" className="form-text"></div>
-    </div>
      <div className="mb-3">
-    <label htmlFor="title" className="form-label">FileName</label>
-    <input type="text" onChange={handleValues} className="form-control" id="InputTitle" placeholder="FileName..."></input>
+    <label htmlFor="FileName" className="form-label">FileName</label>
+    <input type="text" onChange={(e) => setFileName(e.target.value)} required className="form-control" id="fileName" placeholder="FileName..."></input>
      </div>
      <div className="mb-3">
-    <label htmlFor="url-field" className="form-label">FileUrl</label>
-    <input type="url" onChange={handleValues} className="form-control" id="url-field" placeholder="URL..."></input>
+    <label htmlFor="file-Url" className="form-label">FileUrl</label>
+    <input type="url" onChange={(e) => setFileUrl(e.target.value)} required className="form-control" id="file-Url" placeholder="FileUrl..."></input>
      </div>
      <div className="mb-3">
     <label htmlFor="upLoadDate" className="form-label">UploadDate</label>
-    <input type="date" onChange={handleValues} className="form-control" id="uploadDate"></input>
+    <input type="date" onChange={(e) => setDate(e.target.value)} required className="form-control" id="uploadDate"></input>
     </div>
     <button  className="btn btn-success rounded">Submit</button>
     </form>

@@ -5,19 +5,19 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Dashboard = () => {
-  const[name, setName] = useState('');
-  const useNavigate = useNavigate();
+  const[username, setUsername] = useState('');
+  const navigate = useNavigate();
 
   useEffect(()=>{
     axios.get('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/spec#/users/UserController_login')
     .then(res =>{
       if(res.data.valid){
-        setName(res.data.username)
+        setUsername(res.data.username);
       }else{
-          navigate('/login')
+          navigate('/login');
       }   
     })
-    .catch(err =>console,log(err.message))
+    .catch(err =>console.log(err.message))
   },[]);
   const [data, setData] = useState([]);
   const [currentView, setCurrentView] = useState('');
@@ -40,7 +40,7 @@ const Dashboard = () => {
       <Navbar bg="light" className="justify-content-between p-2 border">
        <Navbar.Brand>Service Home UI</Navbar.Brand>
        <div>
-        <span>Welcome!{name}</span>
+        <span>Welcome!{username}</span>
        </div>
        </Navbar>
 

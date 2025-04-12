@@ -12,9 +12,6 @@ function Login(){
         password:''
     });   
     const navigate = useNavigate();
-    const handleInput = (e) =>{
-        setValues(prev =>({...prev, [e.target.email]: [e.target.value]}))
-    }
     const loginUser = async (e) =>{
         e.prevenDefault();
         axios
