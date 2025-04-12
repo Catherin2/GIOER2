@@ -6,26 +6,18 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 function Login(){
-    
-    const[values, setValues] = useState({
-        email:'',
-        password:''
-    });   
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const loginUser = async (e) =>{
         e.prevenDefault();
         axios
         .post('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login/',
-            values,{headers: {'Content-Type': 'application/json'
+            {email, password},{headers: {'Content-Type': 'application/json'
             }
           })
-          .then(res =>{
-            if(res.data.values){
-                navigate('/dashboard')
-            }else{
-                alert("No record")
-            }
-            console.log(res);
+          .then(res => {console.log(res);
+            navigate('/dashboard');
         }).catch(err => console.log(err));
     }  
  return(
@@ -44,7 +36,8 @@ function Login(){
                            autoComplete="off"
                            name="email"
                            className="form-control rounded-0"
-                           onChange={handleInput}
+                           value={email}
+                           onChange={(e) => setEmail(e.target.value)}
                            required/>
                        </div>
                        <div className="mb-3">
@@ -58,7 +51,8 @@ function Login(){
                            name="password"
                            id="password"
                            className="form-control rounded-0"
-                           onChange={handleInput}
+                           value={password}
+                           onChange={(e) => setPassword(e.target.value)}
                           required/>      
                        </div>         
                        <button type="submit" className="btn btn-success w-100 rounded">Login</button>
@@ -67,8 +61,6 @@ function Login(){
                 <Link to="/" className="btn btn-default boarder w-100 bg-light rounded-0 text-decoration-none">Register</Link>                   
                </div>
            </div>
- );
-    
+ );    
 }
-
 export default Login;
