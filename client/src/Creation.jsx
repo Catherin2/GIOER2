@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Button, Card, Navbar, Form} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
-//import { useNavigate} from "react-router-dom";
 import axios from "axios";
 
 
@@ -17,11 +16,7 @@ function Creation(){
         }
     
     });
-
-    //const navigate = useNavigate();
- 
     // Function create new extensions
-
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
