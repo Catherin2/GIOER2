@@ -70,7 +70,7 @@ function Register(){
                 <button type="submit" className="btn btn-success w-100 rounded">Register</button>
                 </form>
                 <p>Already Have an Account?</p>
-                <Link to="/login/:id" className="btn btn-default boarder w-100 bg-light rounded-0 text-decoration-none">Login</Link>
+                <Link to="/login" className="btn btn-default boarder w-100 bg-light rounded-0 text-decoration-none">Login</Link>
             
         </div>
     </div>   
