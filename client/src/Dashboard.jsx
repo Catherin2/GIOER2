@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Dashboard = () => {
+ function Dashboard () {
   const[name, setname] = useState('');
   const navigate = useNavigate();
 
