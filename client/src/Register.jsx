@@ -13,7 +13,7 @@ function Register(){
     const registerUser = async (e) =>{
         e.preventDefault();
         axios
-        .post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/spec#/users/UserController_createUser'
+        .post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users'
          ,{name, email, password},
              {headers: {'Content-Type': 'application/json'
         }

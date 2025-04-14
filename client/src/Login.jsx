@@ -9,10 +9,11 @@ function Login(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    axios.defaults.withCredentials = true;
     const loginUser = async (e) =>{
         e.prevenDefault();
         axios
-        .post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/spec#/users/UserController_login',
+        .post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login',
             {email, password},{headers: {'Content-Type': 'application/json'
             }
           })
