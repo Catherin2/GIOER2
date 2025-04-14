@@ -12,7 +12,7 @@ function Login(){
     const loginUser = async (e) =>{
         e.prevenDefault();
         axios
-        .post('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login/',
+        .post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/spec#/users/UserController_login',
             {email, password},{headers: {'Content-Type': 'application/json'
             }
           })
