@@ -11,7 +11,6 @@ function Login(){
     const navigate = useNavigate();
     const loginUser = async (e) =>{
         e.prevenDefault();
-        console.log(1);
         axios
         .post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login',
             {email, password},{headers: {'Content-Type': 'application/json'
