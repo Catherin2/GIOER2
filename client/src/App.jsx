@@ -24,15 +24,11 @@ function App() {
         <Route path='/register' element={<Register/>}></Route>
         <Route path='/login' element={<Login/>}></Route> 
         <Route path='/upload' element={<Upload/>}></Route>
-        <Route path='/create' element={<Creation/>}></Route>        
         <Route path='/download' element={<Download/>}></Route>
-      </Routes>
-      
+        <Route path='/create' element={<Creation/>}></Route>              
+      </Routes>   
       </BrowserRouter>
-
-    </div>
-        
+    </div>      
   );
 }
-
 export default App
