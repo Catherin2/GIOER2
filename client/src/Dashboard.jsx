@@ -1,24 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import { Container, Row, Col, Button, Card, Navbar, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 
  function Dashboard () {
-  const[name, setname] = useState('');
-  const navigate = useNavigate();
-
-  useEffect(()=>{
-    axios.get('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login')
-    .then(res =>{
-      if(res.data.valid){
-        setname(res.data.username);
-      }else{
-          navigate('/login');
-      }   
-    })
-    .catch(err =>console.log(err.message))
-  },[]);
+  
   const [data, setData] = useState([]);
   const [currentView, setCurrentView] = useState('');
 
@@ -40,7 +26,7 @@ import axios from "axios";
       <Navbar bg="light" className="justify-content-between p-2 border">
        <Navbar.Brand>Service Home UI</Navbar.Brand>
        <div>
-        <span>Welcome!{name}</span>
+        <span>User[name]</span>
        </div>
        </Navbar>
 
@@ -52,7 +38,7 @@ import axios from "axios";
           <Link to="/search" className="btn btn-secondary mb-2 w-100">Search</Link>
           <Link to="/upload" className="btn btn-secondary mb-2 w-100">Upload</Link>
           <Link to="/download" className="btn btn-secondary mb-2 w-100">Download</Link>
-          <Link to="/extension" className="btn btn-secondary mb-2 w-100">Extension</Link> 
+          <Link to="/create" className="btn btn-secondary mb-2 w-100">Creation</Link> 
         </Col>
 
         {/*Main Content */}
@@ -68,7 +54,7 @@ import axios from "axios";
           <div className="text-center mt-4">
             <h4>Welcome</h4>
             <Card className="p-3 mt-3 mx-auto" style={{maxWidth:"500px"}}>
-              <h5>GIMP_Plus Services list:</h5>
+              <h5>GIOER Services list:</h5>
               <p><strong>Resource Catalogue Service:</strong>provides API for resources management</p>
               <p><strong>Search Service:</strong>Provides Search and Filter Service</p>
               <p><strong>File Upload Service:</strong>Uploading resources and storing of files.</p>
@@ -81,7 +67,7 @@ import axios from "axios";
        {/* Footer */}
        <footer className="text-center mt-4 p-3 border-top">
         <a href="#">Home</a> | <a href="#">Contact</a> | <a href="#">Help</a>
-        <p className="mt-2">GIMP_Plus 2025</p>
+        <p className="mt-2">GIOER 2025</p>
        </footer>
     </Container>
   );

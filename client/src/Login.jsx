@@ -20,7 +20,7 @@ function Login(){
           })
           .then(res => {console.log(res);
             navigate('/dashboard');
-        }).catch(err => console.log(err));
+        }).catch(err => console.log(err.message));
     }  
  return(
     <div className="d-flex justify-content-center align-items-center bg-secondary
@@ -51,7 +51,6 @@ function Login(){
                            placeholder="password..."
                            autoComplete="off"
                            name="password"
-                           id="password"
                            className="form-control rounded-0"
                            value={password}
                            onChange={(e) => setPassword(e.target.value)}

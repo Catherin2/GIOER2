@@ -49,7 +49,7 @@ function Upload(){
                 <Col md={2}>
                     <Card >
                         <Card.Body>                
-                            <Button variant="secondary" href="dashboard" className="mb-2 w-100">Dashboard</Button>
+                            <Button variant="secondary" href="/" className="mb-2 w-100">Dashboard</Button>
                        </Card.Body>    
                     </Card>
                 </Col>

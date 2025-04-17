@@ -18,13 +18,13 @@ function App() {
       <Navbar/>
       <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Register/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
-        <Route path='/dashboard' element={<Dashboard/>}></Route>   
-        <Route path='/upload' element={<Upload/>}></Route>
+        <Route path='/' element={<Dashboard/>}></Route>
+        <Route path='/search' element={<Search/>}></Route>          
         <Route path='/resource' element={<Resource/>}></Route>
-        <Route path='/create' element={<Creation/>}></Route>  
-        <Route path='/search' element={<Search/>}></Route>
+        <Route path='/register' element={<Register/>}></Route>
+        <Route path='/login' element={<Login/>}></Route> 
+        <Route path='/upload' element={<Upload/>}></Route>
+        <Route path='/create' element={<Creation/>}></Route>        
         <Route path='/download' element={<Download/>}></Route>
       </Routes>
       
