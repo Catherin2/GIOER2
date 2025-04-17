@@ -16,9 +16,9 @@ function Login(){
             {email, password},{headers: {'Content-Type': 'application/json'
             }
           })
-          .then(res => {console.log(res);
+          .then(res => {(res);
             navigate('/dashboard');
-        }).catch(err => console.log(err.message));
+        }).catch(err => (err.message));
     }  
  return(
     <div className="d-flex justify-content-center align-items-center bg-secondary

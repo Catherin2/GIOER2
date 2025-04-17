@@ -8,8 +8,6 @@ function Register(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    
-
     const registerUser = async (e) =>{
         e.preventDefault();
         axios
@@ -18,10 +16,10 @@ function Register(){
              {headers: {'Content-Type': 'application/json'
         }
       })
-      .then(res => {console.log(res);
+      .then(res => {(res);
         navigate('/login');
     })
-    .catch(err => console.log(err.message));   
+    .catch(err => (err.message));   
     }
         return(
         <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">

@@ -8,16 +8,12 @@ import axios from "axios";
 
 function Upload(){
 // State variable
-
     const [values, setValues] = useState({
     fileName: "",
     fileUrl:"",
     upLoadDate:""
-    });
-      
-    
-    // Function to upload files (extensions)
-    
+    });  
+    // Function to upload files (extensions) 
     const handleSubmit = (e) => {
         e.preventDefault();
         const formdata = new FormData();
@@ -28,15 +24,14 @@ function Upload(){
             }})
           .then((res) => {
             if(res => setValues(res.data.status) === "Success"){
-              console.log("Succeded")
+              ("Succeded")
               document.body.appendChild(res);
             }else{
-              console.log("Failed")
+              ("Failed")
             }     
           })
-          .catch((err) => console.log(err));
-      }
-      
+          .catch((err) => (err.message));
+      }     
     return(
         <Container>
             {/* Navbar*/}
@@ -83,7 +78,6 @@ function Upload(){
                 </Col>                    
             </Row>
         </Container>       
-
     );
 }
 

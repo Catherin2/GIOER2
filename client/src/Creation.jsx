@@ -13,8 +13,7 @@ function Creation(){
     description:"",
     category:[1],
     tags:"",
-        }
-    
+        }  
     });
     // Function create new extensions
     const handleSubmit = (e) => {
@@ -26,9 +25,9 @@ function Creation(){
           }
           )
           .then((res) => {
-            console.log(res);
+            (res);
           })
-          .catch((err) => console.log(err))
+          .catch((err) => (err))
       }
     return(
         <Container>
