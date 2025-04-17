@@ -45,6 +45,7 @@ function Upload(){
                     <Card >
                         <Card.Body>                
                             <Button variant="secondary" href="/" className="mb-2 w-100">Dashboard</Button>
+                            <Button variant="secondary" href="register" className="mb-2 w-100">SignUp/Login</Button>
                        </Card.Body>    
                     </Card>
                 </Col>

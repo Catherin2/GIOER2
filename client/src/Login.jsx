@@ -57,7 +57,7 @@ function Login(){
                        <button type="submit" className="btn btn-success w-100 rounded">Login</button>
                        </form>  
                        <p>Create an Account!</p>
-                <Link to="/" className="btn btn-default boarder w-100 bg-light rounded-0 text-decoration-none">Register</Link>                   
+                <Link to="/register" className="btn btn-default boarder w-100 bg-light rounded-0 text-decoration-none">Register</Link>                   
                </div>
            </div>
  );    
