@@ -9,7 +9,6 @@ function Login(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    //axios.defaults.withCredentials = true;
     const loginUser = async (e) =>{
         e.prevenDefault();
         console.log(1);
