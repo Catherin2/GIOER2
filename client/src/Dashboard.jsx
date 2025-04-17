@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Container, Row, Col, Button, Card, Navbar, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link, useNavigate } from "react-router-dom";
+import {Link} from "react-router-dom";
 
  function Dashboard () {
   
