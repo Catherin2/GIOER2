@@ -1,56 +1,65 @@
-import React, {useEffect, useState} from "react";
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Container, Table, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Resource = () => {
-    const [resources, setResources] = useState([]);
+  const [resources, setResources] = useState([]);
 
-    useEffect(() => {
-        /*axios.get('/api/extensions')*/
-         axios.get('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/extensions')
-        .then(Response => {
-            console.log('API response:',Response.data)
-           // setResources(Response.data);
-           if(Array.isArray(Response.data)) {
-            setResources(Response.data);
-        } else {
-          console.error('Invalid API response format:', Response.data);
-        }
-    })
-      .catch(error => console.error('Error fetching resources:', error));
-      }, []);
-        
-    return(
-        <div className="container">
-            <h2>Resource</h2>
-            <button className="btn btn-secondary mb-3" onClick={() => window.history.back()}>Back to Dashboard</button>
-            <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>title</th>
-                        <th>Category</th>
-                        <th>Author</th>
-                        <th>Upload date</th>
-                        <th>Rating</th>
-                        <th>Archived</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {Array.isArray(resources) && resources.map((res, index) => (
-                            <tr key={index}>
-                            <td>{res.id}</td>
-                            <td>{res.title}</td>
-                            <td>{res.category}</td>
-                            <td>{res.author}</td>
-                            <td>{res.uploadDate}</td>
-                            <td>{res.rating}</td>
-                            <td>{res.archived ? "yes" : "No"}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
+  useEffect(() => {
+    fetchResources();
+  }, []);
+
+  const fetchResources = async () => {
+    try {
+      const response = await axios.get('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/extensions');
+      console.log("API response:", response.data);
+
+      if (response.data && response.data.entities) {
+        setResources(response.data.entities);   
+      } else {
+        console.error("Invalid API response format");
+      }
+    } catch (error) {
+      console.error("Error fetching resources:", error);
     }
+  };
 
-    export default Resource;
+  return (
+    <Container className="mt-4">
+      <h2>Resource</h2>
+      <Link to="/dashboard" className="btn btn-secondary mb-3">
+        Back to Dashboard
+      </Link>
+
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Author</th>
+            <th>Upload Date</th>
+            <th>Rating</th>
+            <th>Archived</th>
+          </tr>
+        </thead>
+        <tbody>
+          {resources.map((res) => (
+            <tr key={res.id}>
+              <td>{res.id}</td>
+              <td>{res.title}</td>
+              <td>{res.category}</td>
+              <td>{res.author}</td>
+              <td>{res.uploadDate}</td>
+              <td>{res.rating}</td>
+              <td>{res.archived ? "Yes" : "No"}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Container>
+  );
+};
+
+export default Resource;
