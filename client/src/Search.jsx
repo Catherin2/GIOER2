@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { SERVER_URL } from './Api';
 
 const Search = () => {
   const [extensionId, setExtensionId] = useState('');
@@ -10,8 +11,8 @@ const Search = () => {
 
   const handleFetchExtension = async () => {
     try {
-      {/*const response = await axios.get('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/extensions');*/}
-      const response = await axios.get(`http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/extensions/${extensionId}`);
+        const response = await axios.get(`${SERVER_URL}/extensions/${extensionId}`);
+       // const response = await axios.get(`http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/extensions/${extensionId}`);
       console.log('Fetched extension:', response.data);
       setExtensionDetails(response.data);
       setError('');

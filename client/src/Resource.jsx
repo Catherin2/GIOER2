@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Table, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { SERVER_URL } from './Api';
+
 
 const Resource = () => {
   const [resources, setResources] = useState([]);
@@ -12,7 +14,7 @@ const Resource = () => {
 
   const fetchResources = async () => {
     try {
-      const response = await axios.get('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/extensions');
+      const response = await axios.get(`${SERVER_URL}/extensions`);
       console.log("API response:", response.data);
 
       if (response.data && response.data.entities) {
