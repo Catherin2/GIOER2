@@ -19,7 +19,7 @@ function Login(){
             {headers: {'Content-Type': 'application/json'
           }
         })   
-          (response.data);
+        console.log(response.data);
           // Handle successful login
           toast.success('Login successful!');
           navigate('/dashboard')
