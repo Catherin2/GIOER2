@@ -26,6 +26,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/upload' element={<Upload/>}></Route>
         <Route path='/resource' element={<Resource/>}></Route>
+        <Route path="/extensions/:id" element={<ExtensionDetail />} />
         <Route path='/create' element={<Creation/>}></Route> 
         <Route path='/search' element={<Search/>}></Route>       
         <Route path='/download' element={<Download/>}></Route>             
