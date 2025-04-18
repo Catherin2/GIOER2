@@ -1,47 +1,59 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import axios from 'axios';
+import { Button, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Search = () => {
-    const [id, setID] = useState('');
-    const [extension, setExtension] = useState(null);
+  const [extensionId, setExtensionId] = useState('');
+  const [extensionDetails, setExtensionDetails] = useState(null);
+  const [error, setError] = useState('');
 
-    const handleSearch = () => {
-        axios.get(`https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/spec#/extensions/ExtensionController_getExtension/${id}`)
-        .then(response => setExtension(response.data))
-        .catch(error => console.error('Error fetching extension:', error));
-    };
+  const handleFetchExtension = async () => {
+    try {
+      {/*const response = await axios.get('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/extensions');*/}
+      const response = await axios.get(`http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/extensions/${extensionId}`);
+      console.log('Fetched extension:', response.data);
+      setExtensionDetails(response.data);
+      setError('');
+    } catch (err) {
+      console.error('Error fetching extension:', err);
+      setExtensionDetails(null);
+      setError('Extension not found!');
+    }
+  };
 
-    return(
-        <div className="container">
-            <h2>Search Service</h2>
-            <button className="btn btn-secondary mb-3" onClick={() => window.history.back()}>Back to dashboard</button>
-            <div>
-                <input
-                type="text"
-                placeholder="Enter Extension ID"
-                value={id}
-                onChange={(e) => setID(e.target.value)}
-                className="form-control mb-2" />
+  return (
+    <div className="container mt-5">
+      <h2>Search Service</h2>
+      <Link to="/dashboard" className="btn btn-secondary mb-3">Back to dashboard</Link>
 
-                <button className="btn btn-primary" onClick={handleSearch}>Fetch Extension</button>
-            </div>
-            {extension && (
-                <div className="mt-3">
-                    <h4>Extension Details:</h4>
-                    <p>ID: {extension.id}</p>
-                    <p>Title: {extension.title}</p>
-                    <p>Description: {extension.description}</p>
-                    <p>Category: {extension.category}</p>
-                    <p>Author: {extension.author}</p>
-                    <p>Upload Date: {extension.uploaddate}</p>
-                    <p>rating: {extension.rating}</p>
-                    <p>Archived: {extension.archived ? 'yes' : 'No'}</p>
-                </div>
-            )}
+      <Form className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Enter Extension ID"
+          value={extensionId}
+          onChange={(e) => setExtensionId(e.target.value)}
+        />
+        <Button onClick={handleFetchExtension} className="mt-2">Fetch Extension</Button>
+      </Form>
+
+      {error && <div className="alert alert-danger">{error}</div>}
+
+      {extensionDetails && (
+        <div className="card p-3">
+          <h5>{extensionDetails.title}</h5>
+          <p><strong>Description:</strong> {extensionDetails.description}</p>
+          <p><strong>Category:</strong> {extensionDetails.category}</p>
+          <p><strong>Tags:</strong> {extensionDetails.tags ? extensionDetails.tags.join(', ') : 'N/A'}</p>
+          <p><strong>Author:</strong> {extensionDetails.author ? extensionDetails.author.name : 'N/A'}</p>
+          <p><strong>Upload Date:</strong> {extensionDetails.uploadDate}</p>
+          <p><strong>Rating:</strong> {extensionDetails.rating}</p>
+          <p><strong>Download Count:</strong> {extensionDetails.downloadCount}</p>
+          <p><strong>Archived:</strong> {extensionDetails.archived ? "Yes" : "No"}</p>
         </div>
-
-    );
-      
+      )}
+    </div>
+  );
 };
 
 export default Search;
