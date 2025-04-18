@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Register(){
     const [formData, setFormData] = useState({
-        username: '',
+        name: '',
         email: '',
         password: ''
       });   
@@ -26,7 +26,7 @@ function Register(){
           // Handle server errors
           if (error.response) {
             console.error('Server error:', error.response.data);
-            toast.error(error.response.data.message || 'Login failed'); 
+            toast.error(error.response.data.message || 'Registration failed'); 
           } else if (error.request) {
             // The request was made but no response was received
             console.error('Network error:', error.request);
@@ -54,9 +54,9 @@ function Register(){
                     autoComplete="off"
                     name="name"
                     className="form-control rounded-0"
-                    value={formData.username}
+                    value={formData.name}
                           onChange={(e) =>
-                           setFormData({ ...formData, username: e.target.value })
+                           setFormData({ ...formData, name: e.target.value })
                           }
                     required/>
                 </div>
