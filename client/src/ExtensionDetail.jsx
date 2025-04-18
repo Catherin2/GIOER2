@@ -11,7 +11,7 @@ const ExtensionDetail = () => {
   useEffect(() => {
     const fetchExtension = async () => {
       try {
-        const response = await axios.get(`${SERVER_URL}/api/extensions/${id}`);
+        const response = await axios.get(`${SERVER_URL}/extensions/${id}`);
         console.log('Fetched Extension:', response.data);
         setExtension(response.data);
       } catch (err) {
