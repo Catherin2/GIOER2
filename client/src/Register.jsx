@@ -18,7 +18,7 @@ function Register(){
             {headers: {'Content-Type': 'application/json'
           }
         })   
-          (response.data);
+        console.log(response.data);
           // Handle successful login
           toast.success('Registration successful!');
           navigate('/login')
