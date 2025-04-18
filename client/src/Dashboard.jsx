@@ -38,7 +38,8 @@ import {Link} from "react-router-dom";
           <Link to="/search" className="btn btn-secondary mb-2 w-100">Search</Link>
           <Link to="/upload" className="btn btn-secondary mb-2 w-100">Upload</Link>
           <Link to="/download" className="btn btn-secondary mb-2 w-100">Download</Link>
-          <Link to="/create" className="btn btn-secondary mb-2 w-100">Creation</Link> 
+          <Link to="/create" className="btn btn-secondary mb-2 w-100">Creation</Link>
+          <Link to="/register" className="btn btn-secondary mb-2 w-100">SignUp/Login</Link>
         </Col>
 
         {/*Main Content */}
