@@ -15,7 +15,7 @@ function Login(){
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await axios.post('http://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login/', formData, 
+           response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login', formData, 
             {headers: {'Content-Type': 'application/json'
           }
         })   

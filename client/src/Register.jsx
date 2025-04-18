@@ -14,7 +14,7 @@ function Register(){
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users', formData, 
+           response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users', formData, 
             {headers: {'Content-Type': 'application/json'
           }
         })   
