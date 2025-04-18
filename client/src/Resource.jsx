@@ -50,7 +50,7 @@ const Resource = () => {
               <td>{res.id}</td>
               <td>{res.title}</td>
               <td>{res.category}</td>
-              <td>{res.author}</td>
+              <td>{res.author ? res.author.name : "N/A"}</td>
               <td>{res.uploadDate}</td>
               <td>{res.rating}</td>
               <td>{res.archived ? "Yes" : "No"}</td>
