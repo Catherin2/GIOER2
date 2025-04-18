@@ -1,6 +1,7 @@
+import React, { useState} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Register from './Register';
 import Login from './Login';
 import Dashboard from './Dashboard';
