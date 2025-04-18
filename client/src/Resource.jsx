@@ -50,7 +50,11 @@ const Resource = () => {
           {resources.map((res) => (
             <tr key={res.id}>
               <td>{res.id}</td>
-              <td>{res.title}</td>
+              <td>
+                    <Link to={`/extensions/${res.id}`}>
+                        {res.title}
+                    </Link>
+              </td>
               <td>{res.category}</td>
               <td>{res.author ? res.author.name : "N/A"}</td>
               <td>{res.uploadDate}</td>
