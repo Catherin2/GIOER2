@@ -21,7 +21,8 @@ function Register(){
         console.log(response.data);
           // Handle successful login
           toast.success('Registration successful!');
-          navigate('/login')
+          navigate('/login');
+          
         } catch (error) {
           // Handle server errors
           if (error.response) {
@@ -40,9 +41,9 @@ function Register(){
       }
         return(
         <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
-        <ToastContainer position="top-center" /> {/*ToastContainer */}
         <div className="bg-white p-3 rounded w-25">
             <h2>Register</h2>
+            <ToastContainer position="top-center" /> {/*ToastContainer */}
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="text">

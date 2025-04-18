@@ -22,7 +22,7 @@ function Login(){
         console.log(response.data);
           // Handle successful login
           toast.success('Login successful!');
-          navigate('/dashboard')
+          navigate('/dashboard');
         } catch (error) {
           // Handle server errors
           if (error.response) {
