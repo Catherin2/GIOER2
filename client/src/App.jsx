@@ -11,6 +11,7 @@ import Resource from './Resource';
 import Creation from './Creation';
 import Search from './Search';
 import Download from './Download';
+import ExtensionDetail from './ExtensionDetail';
 
 function App() {
   
