@@ -19,10 +19,9 @@ function Register(){
           }
         })   
         console.log(response.data);
-          // Handle successful login
+          // Handle successful registration
           toast.success('Registration successful!');
-          navigate('/login');
-          
+          navigate('/login');        
         } catch (error) {
           // Handle server errors
           if (error.response) {
