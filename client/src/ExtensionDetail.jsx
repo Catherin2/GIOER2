@@ -42,7 +42,7 @@ const ExtensionDetail = () => {
       <p><strong>Title:</strong> {extension.title}</p>
       <p><strong>Description:</strong> {extension.description}</p>
       <p><strong>Category:</strong> {extension.category}</p>
-      <p><strong>Author:</strong> {extension.author?.name || 'N/A'}</p>
+      <p><strong>Author:</strong> {extension.author || 'N/A'}</p>
       <p><strong>Upload Date:</strong> {extension.uploadDate}</p>
       <p><strong>Rating:</strong> {extension.rating}</p>
       <p><strong>Tags:</strong> {extension.tags?.join(', ')}</p>
