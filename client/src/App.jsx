@@ -11,6 +11,7 @@ import Resource from './Resource';
 import Creation from './Creation';
 import Search from './Search';
 import Download from './Download';
+import Dashboard2 from './Dashboard2';
 
 function App() {
   
@@ -20,15 +21,15 @@ function App() {
          <Navbar/>
       <Routes>
         <Route path='/' element={<Dashboard/>}></Route>
-        <Route path='/register' element={<Register/>}></Route>
-        <Route path='/login' element={<Login/>}></Route> 
-
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/upload' element={<Upload/>}></Route>
         <Route path='/resource' element={<Resource/>}></Route>
         <Route path='/create' element={<Creation/>}></Route> 
         <Route path='/search' element={<Search/>}></Route>       
-        <Route path='/download' element={<Download/>}></Route>             
+        <Route path='/download' element={<Download/>}></Route>
+        <Route path='/register' element={<Register/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/dashboard2' element={<Dashboard2/>}></Route>              
       </Routes>   
       </BrowserRouter>
     </div>      

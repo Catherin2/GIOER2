@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Button, Card, Navbar, Form} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Creation(){
@@ -12,22 +13,36 @@ function Creation(){
             title: "",
     description:"",
     category:[1],
-    tags:"",
+    tags:""
         }  
     });
     // Function create new extensions
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        axios
-          .post("https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/spec#/extensions/ExtensionController_createExtension",values,
+        try {
+         var  response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/extensions', values, 
             {headers: {'Content-Type': 'application/json'
-            }
           }
-          )
-          .then((res) => {
-            (res);
-          })
-          .catch((err) => (err))
+        })   
+        console.log(response.data);
+          // Handle successful registration
+          toast.success('Extension created successful!');
+          navigate('/dashboard');        
+        } catch (error) {
+          // Handle server errors
+          if (error.response) {
+            console.error('Server error:', error.response.data);
+            toast.error(error.response.data.message || 'Extension creation failed'); 
+          } else if (error.request) {
+            // The request was made but no response was received
+            console.error('Network error:', error.request);
+            toast.error('Network error. Please try again.');
+          } else {
+            //request Error
+            console.error('Error:', error.message);
+            toast.error('An unexpected error occurred.');
+          }
+        }
       }
     return(
         <Container>
@@ -41,7 +56,7 @@ function Creation(){
                 <Col md={2}>
                     <Card >
                         <Card.Body>
-                            <Button variant="secondary" href="/" className="mb-2 w-100">Dashboard</Button>
+                            <Button variant="secondary" href="/dashboard2" className="mb-2 w-100">Dashboard</Button>
                        </Card.Body>    
                     </Card>
                 </Col>
@@ -54,23 +69,24 @@ function Creation(){
                 </Card.Body>
                 <Card>              
               <div>
+              <ToastContainer position="top-center" /> {/*ToastContainer */}
                  <form onSubmit={handleSubmit}>
     <div className="mb-3">
     <label htmlFor="title" className="form-label">Title</label>
-    <input type="text" className="form-control" id="InputID" placeholder="Title..." onChange={(e) => setValues({...values, title: e.target.value})} required aria-describedby="emailHelp"></input>
+    <input type="text" className="form-control" id="title" placeholder="Title..." onChange={(e) => setValues({...values, title: e.target.value})} required aria-describedby="emailHelp"></input>
     <div id="id" className="form-text"></div>
     </div>
      <div className="mb-3">
     <label htmlFor="description" className="form-label">Description</label>
-    <input type="textarea" className="form-control" id="InputDescrip" placeholder="Description..." onChange={(e) => setValues({...values, description: e.target.value})} required></input>
+    <input type="textarea" className="form-control" id="description" placeholder="Description..." onChange={(e) => setValues({...values, description: e.target.value})} required></input>
      </div>
      <div className="mb-3">
     <label htmlFor="category" className="form-label">Category</label>
-    <input type="text" className="form-control" id="InputDescription" placeholder="Category..." onChange={(e) => setValues({...values, category: e.target.value})} required></input>
+    <input type="text" className="form-control" id="category" placeholder="Category..." onChange={(e) => setValues({...values, category: e.target.value})} required></input>
      </div>
      <div className="mb-3">
     <label htmlFor="tags" className="form-label">Tags</label>
-    <input type="text" className="form-control" id="InputTags" placeholder="Tags..." onChange={(e) => setValues({...values, tags: e.target.value})} required></input>
+    <input type="text" className="form-control" id="tags" placeholder="Tags..." onChange={(e) => setValues({...values, tags: e.target.value})} required></input>
     </div>
     <button type="submit" className="btn btn-success rounded">Submit</button>
     </form>
