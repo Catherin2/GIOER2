@@ -11,11 +11,7 @@ import Resource from './Resource';
 import Creation from './Creation';
 import Search from './Search';
 import Download from './Download';
-<<<<<<< HEAD
 import Dashboard2 from './Dashboard2';
-=======
-import ExtensionDetail from './ExtensionDetail';
->>>>>>> 2039f78e02a51693946ac811eab4209280ebf6f4
 
 function App() {
   
