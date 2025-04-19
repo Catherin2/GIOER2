@@ -11,7 +11,11 @@ import Resource from './Resource';
 import Creation from './Creation';
 import Search from './Search';
 import Download from './Download';
+<<<<<<< HEAD
 import Dashboard2 from './Dashboard2';
+=======
+import ExtensionDetail from './ExtensionDetail';
+>>>>>>> 2039f78e02a51693946ac811eab4209280ebf6f4
 
 function App() {
   
@@ -24,6 +28,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/upload' element={<Upload/>}></Route>
         <Route path='/resource' element={<Resource/>}></Route>
+        <Route path="/extensions/:id" element={<ExtensionDetail />} />
         <Route path='/create' element={<Creation/>}></Route> 
         <Route path='/search' element={<Search/>}></Route>       
         <Route path='/download' element={<Download/>}></Route>
