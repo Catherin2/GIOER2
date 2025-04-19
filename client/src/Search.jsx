@@ -150,7 +150,11 @@ const Search = () => {
           <tbody>
             {extensions.map((ext) => (
               <tr key={ext.id}>
-                <td>{ext.title}</td>
+                <td>
+                    <Link to={`/extensions/${ext.id}`}>
+                      {ext.title}
+                    </Link>
+                </td>
                 <td>{ext.category}</td>
                 <td>{ext.author?.name || 'N/A'}</td>
                 <td>{ext.uploadDate?.split('T')[0]}</td>
