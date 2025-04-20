@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {Container, Row, Col, Button, Card, Navbar, Form} from 'react-bootstrap';
+import React, {useState} from 'react';
+import {Container, Row, Col, Button, Card, Navbar} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 
 function Creation(){
@@ -16,6 +17,7 @@ function Creation(){
     tags:""
         }  
     });
+    const navigate = useNavigate();
     // Function create new extensions
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -46,17 +48,17 @@ function Creation(){
       }
     return(
         <Container>
-            {/* Navbar*/}
-            <Navbar bg="white m-4 nav flex-column">
-                <Navbar.Brand> Creation Service </Navbar.Brand>
-            </Navbar>
-
-            <Row className="mt-4 bg-white">
+          {/* Navbar*/}
+                      <Navbar bg="white m-4 nav flex-column">
+                          <Navbar.Brand> Creation Service </Navbar.Brand>
+                      </Navbar>
+            {/* Nav*/}
+           <Row className="mt-4 bg-white">
                 {/* Sidebar */}
                 <Col md={2}>
                     <Card >
                         <Card.Body>
-                            <Button variant="secondary" href="/dashboard2" className="mb-2 w-100">Dashboard</Button>
+                            <Button variant="secondary" href="/" className="mb-2 w-100">Dashboard</Button>
                        </Card.Body>    
                     </Card>
                 </Col>

@@ -1,49 +1,50 @@
-import {useState} from 'react';
-import {Link, useNavigate } from "react-router-dom";
-import axios from 'axios';
+import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import { Link, useNavigate} from 'react-router-dom';
 
-function Register(){
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: ''
-      });   
-    const navigate = useNavigate();
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-         var  response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users', formData, 
+const Register = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email:'',
+    password: ''
+  });
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      var response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users', formData, 
             {headers: {'Content-Type': 'application/json'
           }
-        })   
-        console.log(response.data);
-          // Handle successful registration
-          toast.success('Registration successful!');
-          navigate('/login');        
-        } catch (error) {
-          // Handle server errors
-          if (error.response) {
-            console.error('Server error:', error.response.data);
-            toast.error(error.response.data.message || 'Registration failed'); 
-          } else if (error.request) {
-            // The request was made but no response was received
-            console.error('Network error:', error.request);
-            toast.error('Network error. Please try again.');
-          } else {
-            //request Error
-            console.error('Error:', error.message);
-            toast.error('An unexpected error occurred.');
-          }
-        }
+        }) 
+      console.log(response.data);
+      // Handle successful registration
+      toast.success('Registration successful!');
+      navigate('/dashboard');
+    } catch (error) {
+      // Handle server errors
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        console.error('Server error:', error.response.data);
+        toast.error(error.response.data.message || 'Registration failed'); // Display server error
+      } else if (error.request) {
+        // The request was made but no response 
+        console.error('Network error:', error.request);
+        toast.error('Network error. Please try again.');
+      } else {
+        // request triggered Error
+        console.error('Error:', error.message);
+        toast.error('An unexpected error occurred.');
       }
-        return(
-        <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
-        <div className="bg-white p-3 rounded w-25">
-            <h2>Register</h2>
-            <ToastContainer position="top-center" /> {/*ToastContainer */}
-            <form onSubmit={handleSubmit}>
+    }
+  }
+  return (
+    <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
+      <ToastContainer position="top-center" /> {/*ToastContainer */}
+      <div className="bg-white p-3 rounded w-25">
+      <h2>Register</h2> 
+      <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="text">
                         <strong>Name</strong>
@@ -95,8 +96,7 @@ function Register(){
                 <button type="submit" className="btn btn-success w-100 rounded">Register</button>
                 </form>
                 <p>Already Have an Account?</p>
-                <Link to="/login" className="btn btn-default boarder w-100 bg-light rounded-0 text-decoration-none">Login</Link>
-            
+                <Link to="/login" className="btn btn-default boarder w-100 bg-light rounded-0 text-decoration-none">Login</Link>           
         </div>
     </div>   
     );

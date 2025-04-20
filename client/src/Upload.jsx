@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import {Container, Row, Col, Button, Card, Navbar, Form} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -13,6 +16,7 @@ function Upload(){
     fileUrl:"",
     upLoadDate:""
     });  
+    
     // Function to upload files (extensions) 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -57,18 +61,19 @@ function Upload(){
                 </Card.Body>
                 <Card>              
               <div>
+                <ToastContainer position="top-center" /> {/*ToastContainer */}
                  <form onSubmit={handleSubmit}>
      <div className="mb-3">
     <label htmlFor="FileName" className="form-label">FileName</label>
-    <input type="text" onChange={(e) => setFileName(e.target.value)} required className="form-control" id="fileName" placeholder="FileName..."></input>
+    <input type="text" onChange={(e) => setValues({...values, fileName: e.target.value})} required className="form-control" id="fileName" placeholder="FileName..."></input>
      </div>
      <div className="mb-3">
-    <label htmlFor="file-Url" className="form-label">FileUrl</label>
-    <input type="url" onChange={(e) => setFileUrl(e.target.value)} required className="form-control" id="file-Url" placeholder="FileUrl..."></input>
+    <label htmlFor="fileUrl" className="form-label">FileUrl</label>
+    <input type="url" onChange={(e) => setValues({...values, fileUrl: e.target.value})} required className="form-control" id="fileUrl" placeholder="FileUrl..."></input>
      </div>
      <div className="mb-3">
     <label htmlFor="upLoadDate" className="form-label">UploadDate</label>
-    <input type="date" onChange={(e) => setDate(e.target.value)} required className="form-control" id="uploadDate"></input>
+    <input type="date" onChange={(e) => setValues({...values, upLoadDate: e.target.value})} required className="form-control" id="uploadDate"></input>
     </div>
     <button  className="btn btn-success rounded">Submit</button>
     </form>

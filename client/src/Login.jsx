@@ -15,14 +15,19 @@ function Login(){
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-         var  response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login', formData, 
-            {headers: {'Content-Type': 'application/json'
-          }
-        })   
+         var  response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login/', formData, 
+            {headers: {'Content-Type': 'application/json',
+              data: new URLSearchParams({
+                grant_type: 'client_credentials',
+                client_id: 'YOUR_CLIENT_ID',
+                client_secret: 'YOUR_CLIENT_SECRET',
+                audience: 'YOUR_API_IDENTIFIER'
+              })
+          }})   
         console.log(response.data);
           // Handle successful login
           toast.success('Login successful!');
-          navigate('/dashboard2');
+          navigate('/dashboard');
         } catch (error) {
           // Handle server errors
           if (error.response) {
