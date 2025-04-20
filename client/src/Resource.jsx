@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Table, Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SERVER_URL } from './Api';
 
 const Resource = () => {
@@ -10,6 +10,7 @@ const Resource = () => {
   const [limit, setLimit] = useState(5); // Show 5 resources per page
   const [totalPages, setTotalPages] = useState(1); // optional, if backend sends total pages
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // for update navigation
 
   useEffect(() => {
     fetchResources();
@@ -40,6 +41,10 @@ const Resource = () => {
     }
   };
 
+  const handleUpdate = (id) => {
+    navigate(`/extensions/${id}`);
+  };
+  
   return (
     <Container className="mt-4">
       <h2>Resource Catalogue</h2>
@@ -59,6 +64,7 @@ const Resource = () => {
             <th>Upload Date</th>
             <th>Rating</th>
             <th>Archived</th>
+            <th>Actions</th>   {/* added new column*/}
           </tr>
         </thead>
         <tbody>
@@ -75,6 +81,25 @@ const Resource = () => {
               <td>{res.uploadDate ? res.uploadDate.substring(0, 10) : ''}</td>
               <td>{res.rating}</td>
               <td>{res.archived ? "Yes" : "No"}</td>
+
+              <td>
+                <Button
+                variant="danger"
+                size="sm"
+                className="me-2"
+                onClick={() => handleDelete(res.id)}
+                >
+                  Delete
+                </Button>
+                <Button
+                variant="primary"
+                size="sm"
+                onClick={() => handleUpdate(res.id)}
+                >
+                  update 
+                </Button>
+              </td>
+              
             </tr>
           ))}
         </tbody>
