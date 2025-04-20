@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import { SERVER_URL } from './Api';
+import { SERVER_URL,SERVER_URL2} from './Api';
 
 const ExtensionDetail = () => {
   const { id } = useParams();
@@ -36,6 +36,11 @@ const ExtensionDetail = () => {
     return <div>Loading...</div>;
   }
 
+  const linkStyle = {
+    textDecoration: "none",
+    color:'black'
+  };
+
   return (
     <div className="container mt-4">
       <h2>Extension Details</h2>
@@ -46,8 +51,9 @@ const ExtensionDetail = () => {
       <p><strong>Upload Date:</strong> {extension.uploadDate}</p>
       <p><strong>Rating:</strong> {extension.rating}</p>
       <p><strong>Tags:</strong> {extension.tags?.join(', ')}</p>
-
-      <Link to="/resource" className="btn btn-primary mt-3">Back to Resource List</Link>
+     
+      <Link to="#" className="btn btn-secondary mt-3">Download Extension</Link> <br/>
+      <Link to="/resource" className="btn btn-secondary mt-3">Back to Resource List</Link>
     </div>
   );
 };

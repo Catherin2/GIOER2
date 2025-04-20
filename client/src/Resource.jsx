@@ -40,10 +40,15 @@ const Resource = () => {
     }
   };
 
+  const linkStyle = {
+    textDecoration: "none",
+    color:'black'
+  };
+
   return (
     <Container className="mt-4">
       <h2>Resource Catalogue</h2>
-      <Link to="/dashboard" className="btn btn-secondary mb-3">
+      <Link to="/" className="btn btn-secondary mb-3">
         Back to Dashboard
       </Link>
 
@@ -52,7 +57,7 @@ const Resource = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>ID</th>
+            {/* <th>ID</th> */}
             <th>Title</th>
             <th>Category</th>
             <th>Author</th>
@@ -64,9 +69,9 @@ const Resource = () => {
         <tbody>
           {resources.map((res) => (
             <tr key={res.id}>
-              <td>{res.id}</td>
+              {/* <td>{res.id}</td> */}
               <td>
-                <Link to={`/extensions/${res.id}`}>
+                <Link to={`/extensions/${res.id}`}  style={linkStyle}>
                   {res.title}
                 </Link>
               </td>
