@@ -61,31 +61,20 @@ const Dashboard = () => {
           <Link to="/create" className="btn btn-secondary mb-2 w-100">Creation</Link> 
           <Link to="/resource" className="btn btn-secondary mb-2 w-100">Resource</Link>
           <Link to="/search" className="btn btn-secondary mb-2 w-100">Search</Link>
+           {/* <Link to="/upload" className="btn btn-secondary mb-2 w-100">Upload</Link>
+              <Link to="/download" className="btn btn-secondary mb-2 w-100">Download</Link> */}
         </>
       }
       
   return(
     <Container fluid>
-      {/*Navbar*/}
-      {/* <Navbar bg="light" className="justify-content-between p-2 border">
-          <Navbar.Brand></Navbar.Brand>
-          <div className="d-flex align-items-center">
-              <span className="me-3">User[name]</span> 
-              <Link to="/login" className="btn btn-primary btn-sm me-2">Login</Link>
-              <Link to="/register" className ="btn btn-outline-primary btn-sm">Register</Link>
-          </div>
-       </Navbar> */}
+
        {navBar}
 
        <Row className="mt-3">
           {/*Sidebar */}
           <Col md={2} className="d-flex flex-column align-items-start">
-              {/* <Button onClick={fetchResources} variant="secondary" className="mb-2 w-100">Resource</Button> */}
-              {/* <Link to="/create" className="btn btn-secondary mb-2 w-100">Creation</Link> 
-              <Link to="/resource" className="btn btn-secondary mb-2 w-100">Resource</Link>
-              <Link to="/search" className="btn btn-secondary mb-2 w-100">Search</Link> */}
-              {/* <Link to="/upload" className="btn btn-secondary mb-2 w-100">Upload</Link>
-              <Link to="/download" className="btn btn-secondary mb-2 w-100">Download</Link> */}
+            
               {sideBar}
           </Col>
 
