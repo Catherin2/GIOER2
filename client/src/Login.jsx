@@ -28,12 +28,13 @@ function Login(){
             }}) 
                //save access token in basic session storage
                 sessionStorage.setItem('accessToken',response.data.accessToken);
+                sessionStorage.setItem('isLogin?',true);
                 // const token = sessionStorage.getItem('accessToken');
              
                 console.log(response.data);
                 // Handle successful login
                 toast.success('Login successful!');
-                navigate('/dashboard');
+                navigate('/');
         }catch(error) {
           // Handle server errors
           if(error.response) {

@@ -7,39 +7,86 @@ const Dashboard = () => {
   const [data, setData] = useState([]);
   const [currentView, setCurrentView] = useState('');
 
-  const fetchResources = async () =>{
-    const mockData = [
-      {id:1, name:"Resource A", description: "This is resource A"},
-      {id:2, name:"Resource B", description:"This is resource B"},
-    ];
+  // const fetchResources = async () =>{
+  //   const mockData = [
+  //     {id:1, name:"Resource A", description: "This is resource A"},
+  //     {id:2, name:"Resource B", description:"This is resource B"},
+  //   ];
 
-    setTimeout(()=>{
-      setData(mockData);
-      setCurrentView('resources');
-    }, 500);
+  //   setTimeout(()=>{
+  //     setData(mockData);
+  //     setCurrentView('resources');
+  //   }, 500);
+  // }
+
+  //value set to false means using is not logging, based in session in Logging page
+  const loginState = sessionStorage.getItem('isLogin?');
+  const [show,setShow] = useState(false || loginState);
+
+  const logout = () =>{
+    sessionStorage.clear();
+    window.location.href='/';
   }
   
+  let navBar = 
+    <Navbar bg="light" className="justify-content-between p-2 border">
+      <Navbar.Brand></Navbar.Brand>
+      <div className="d-flex align-items-center">
+          <Link to="/login" className="btn btn-secondary btn-sm me-2">Login</Link>
+          <Link to="/register" className ="btn btn-secondary btn-sm">Register</Link>
+      </div>
+    </Navbar>
+
+    if(show){
+      navBar = 
+        <Navbar bg="light" className="justify-content-between p-2 border">
+          <Navbar.Brand></Navbar.Brand>
+          <div className="d-flex align-items-center">
+              <span className="me-3">User[name]</span> 
+              <Link to="#" className ="btn btn-secondary  btn-sm" onClick={logout}>Log out</Link>
+          </div>
+        </Navbar>
+    }
+
+    let sideBar = <>
+            
+              <Link to="/resource" className="btn btn-secondary mb-2 w-100">Resource</Link>
+              <Link to="/search" className="btn btn-secondary mb-2 w-100">Search</Link>
+              {/* <Link to="/upload" className="btn btn-secondary mb-2 w-100">Upload</Link>
+              <Link to="/download" className="btn btn-secondary mb-2 w-100">Download</Link> */}
+      </>
+
+      if(show){
+        sideBar = <>
+          <Link to="/create" className="btn btn-secondary mb-2 w-100">Creation</Link> 
+          <Link to="/resource" className="btn btn-secondary mb-2 w-100">Resource</Link>
+          <Link to="/search" className="btn btn-secondary mb-2 w-100">Search</Link>
+        </>
+      }
+      
   return(
     <Container fluid>
       {/*Navbar*/}
-      <Navbar bg="light" className="justify-content-between p-2 border">
+      {/* <Navbar bg="light" className="justify-content-between p-2 border">
           <Navbar.Brand></Navbar.Brand>
           <div className="d-flex align-items-center">
               <span className="me-3">User[name]</span> 
               <Link to="/login" className="btn btn-primary btn-sm me-2">Login</Link>
               <Link to="/register" className ="btn btn-outline-primary btn-sm">Register</Link>
           </div>
-       </Navbar>
+       </Navbar> */}
+       {navBar}
 
        <Row className="mt-3">
           {/*Sidebar */}
           <Col md={2} className="d-flex flex-column align-items-start">
-            {/* <Button onClick={fetchResources} variant="secondary" className="mb-2 w-100">Resource</Button> */}
+              {/* <Button onClick={fetchResources} variant="secondary" className="mb-2 w-100">Resource</Button> */}
+              {/* <Link to="/create" className="btn btn-secondary mb-2 w-100">Creation</Link> 
               <Link to="/resource" className="btn btn-secondary mb-2 w-100">Resource</Link>
-              <Link to="/search" className="btn btn-secondary mb-2 w-100">Search</Link>
-              <Link to="/upload" className="btn btn-secondary mb-2 w-100">Upload</Link>
-              <Link to="/download" className="btn btn-secondary mb-2 w-100">Download</Link>
-              <Link to="/create" className="btn btn-secondary mb-2 w-100">Creation</Link> 
+              <Link to="/search" className="btn btn-secondary mb-2 w-100">Search</Link> */}
+              {/* <Link to="/upload" className="btn btn-secondary mb-2 w-100">Upload</Link>
+              <Link to="/download" className="btn btn-secondary mb-2 w-100">Download</Link> */}
+              {sideBar}
           </Col>
 
           {/*Main Content */}

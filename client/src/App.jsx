@@ -19,7 +19,7 @@ import ExtensionDetail from './ExtensionDetail';
 function App() {
     //handle axios in one single page, note that i did that only for upload / download, you do the rest.
     const [extensions, setExtensions] = useState([]);
-    
+
     const accessToken = sessionStorage.getItem('accessToken');
 
     const createNewExtension = async (title,description,category,tags) => {
@@ -70,7 +70,7 @@ function App() {
         <Route path='/search' element={<Search/>}></Route>       
         <Route path='/download' element={<Download/>}></Route>
         <Route path='/register' element={<Register/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>            
+        <Route path='/login' element={<Login/>}></Route>         
       </Routes>   
       </BrowserRouter>
     </div>      
