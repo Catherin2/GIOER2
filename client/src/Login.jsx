@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Await, Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -8,36 +8,42 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Login(){
     const [formData, setFormData] = useState({
-        email: '',
-        password: '',
+            email: '',
+            password: '',
       });
-      const navigate = useNavigate();
-      const handleSubmit = async (e) => {
+
+    const navigate = useNavigate();
+
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        try {
-         var  response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login/', formData, 
-            {headers: {'Content-Type': 'application/json',
-              data: new URLSearchParams({
-                grant_type: 'client_credentials',
-                client_id: 'YOUR_CLIENT_ID',
-                client_secret: 'YOUR_CLIENT_SECRET',
-                audience: 'YOUR_API_IDENTIFIER'
-              })
-          }})   
-        console.log(response.data);
-          // Handle successful login
-          toast.success('Login successful!');
-          navigate('/dashboard');
-        } catch (error) {
+        try{
+          var response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login/', formData, 
+              {headers: {'Content-Type': 'application/json',
+                data: new URLSearchParams({
+                  grant_type: 'client_credentials',
+                  client_id: 'YOUR_CLIENT_ID',
+                  client_secret: 'YOUR_CLIENT_SECRET',
+                  audience: 'YOUR_API_IDENTIFIER'
+                })
+            }}) 
+               //save access token in basic session storage
+                sessionStorage.setItem('accessToken',response.data.accessToken);
+                // const token = sessionStorage.getItem('accessToken');
+             
+                console.log(response.data);
+                // Handle successful login
+                toast.success('Login successful!');
+                navigate('/dashboard');
+        }catch(error) {
           // Handle server errors
-          if (error.response) {
+          if(error.response) {
             console.error('Server error:', error.response.data);
             toast.error(error.response.data.message || 'Login failed'); 
-          } else if (error.request) {
+          }else if(error.request) {
             // The request was made but no response was received
             console.error('Network error:', error.request);
             toast.error('Network error. Please try again.');
-          } else {
+          }else{
             //request Error
             console.error('Error:', error.message);
             toast.error('An unexpected error occurred.');

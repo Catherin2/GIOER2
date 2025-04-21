@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-function Upload(){
+function Upload({onCreate}){
 // State variable
     const [values, setValues] = useState({
     fileName: "",
@@ -40,7 +40,7 @@ function Upload(){
         <Container>
             {/* Navbar*/}
             <Navbar bg="white m-4 nav flex-column">
-                <Navbar.Brand> Upload Service </Navbar.Brand>
+              <Navbar.Brand> Upload Service </Navbar.Brand>
             </Navbar>
 
             <Row className="mt-4 bg-white">
@@ -55,34 +55,34 @@ function Upload(){
 
                 {/* Main Content */}
                 <Col md ={9}>
-                <Card>
-                <Card.Body>
-                    <h5>File Upload Form</h5>
-                </Card.Body>
-                <Card>              
-              <div>
-                <ToastContainer position="top-center" /> {/*ToastContainer */}
-                 <form onSubmit={handleSubmit}>
-     <div className="mb-3">
-    <label htmlFor="FileName" className="form-label">FileName</label>
-    <input type="text" onChange={(e) => setValues({...values, fileName: e.target.value})} required className="form-control" id="fileName" placeholder="FileName..."></input>
-     </div>
-     <div className="mb-3">
-    <label htmlFor="fileUrl" className="form-label">FileUrl</label>
-    <input type="url" onChange={(e) => setValues({...values, fileUrl: e.target.value})} required className="form-control" id="fileUrl" placeholder="FileUrl..."></input>
-     </div>
-     <div className="mb-3">
-    <label htmlFor="upLoadDate" className="form-label">UploadDate</label>
-    <input type="date" onChange={(e) => setValues({...values, upLoadDate: e.target.value})} required className="form-control" id="uploadDate"></input>
-    </div>
-    <button  className="btn btn-success rounded">Submit</button>
-    </form>
-                    </div>
-                </Card>
-                </Card>
+                  <Card>
+                    <Card.Body>
+                        <h5>File Upload Form</h5>
+                    </Card.Body>
+                    <Card>              
+                      <div>
+                        <ToastContainer position="top-center" /> {/*ToastContainer */}
+                        <form onSubmit={handleSubmit}>
+                              <div className="mb-3">
+                              <label htmlFor="FileName" className="form-label">FileName</label>
+                              <input type="text" onChange={(e) => setValues({...values, fileName: e.target.value})} required className="form-control" id="fileName" placeholder="FileName..."></input>
+                              </div>
+                              <div className="mb-3">
+                              <label htmlFor="fileUrl" className="form-label">FileUrl</label>
+                              <input type="url" onChange={(e) => setValues({...values, fileUrl: e.target.value})} required className="form-control" id="fileUrl" placeholder="FileUrl..."></input>
+                              </div>
+                              <div className="mb-3">
+                              <label htmlFor="upLoadDate" className="form-label">UploadDate</label>
+                              <input type="date" onChange={(e) => setValues({...values, upLoadDate: e.target.value})} required className="form-control" id="uploadDate"></input>
+                              </div>
+                              <button  className="btn btn-success rounded">Submit</button>
+                          </form>
+                        </div>
+                    </Card>
+                  </Card>
                 </Col>                    
             </Row>
-        </Container>       
+     </Container>       
     );
 }
 

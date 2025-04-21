@@ -17,7 +17,7 @@ const Resource = () => {
 
   const fetchResources = async () => {
     try {
-      const response = await axios.get(`${SERVER_URL}/extensions`, {
+      const response = await axios.get(`${SERVER_URL}/extensions/`, {
         params: {
           page: page,
           limit: limit,
