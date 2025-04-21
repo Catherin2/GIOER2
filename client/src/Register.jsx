@@ -21,13 +21,13 @@ const Register = () => {
       console.log(response.data);
       // Handle successful registration
       toast.success('Registration successful!');
-      navigate('/dashboard');
+      navigate('/login');
     } catch (error) {
       // Handle server errors
       if (error.response) {
         // The request was made and the server responded with a status code
         console.error('Server error:', error.response.data);
-        toast.error(error.response.data.message || 'Registration failed'); // Display server error
+        toast.error(error.response.data.message.join() || 'Registration failed'); // Display server error
       } else if (error.request) {
         // The request was made but no response 
         console.error('Network error:', error.request);
@@ -40,10 +40,10 @@ const Register = () => {
     }
   }
   return (
-    <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
-      <ToastContainer position="top-center" /> {/*ToastContainer */}
+    <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">    
       <div className="bg-white p-3 rounded w-25">
       <h2>Register</h2> 
+      <ToastContainer position="top-center" /> {/*ToastContainer */}
       <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="text">

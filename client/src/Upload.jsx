@@ -6,36 +6,42 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-
-
-
 function Upload(){
 // State variable
     const [values, setValues] = useState({
     fileName: "",
     fileUrl:"",
     upLoadDate:""
-    });  
-    
-    // Function to upload files (extensions) 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const formdata = new FormData();
-        formdata.append('url', values);
-        axios
-          .post("", formdata,
-            {headers: {'Content-Type': 'application/json'
-            }})
-          .then((res) => {
-            if(res => setValues(res.data.status) === "Success"){
-              ("Succeded")
-              document.body.appendChild(res);
-            }else{
-              ("Failed")
-            }     
-          })
-          .catch((err) => (err.message));
-      }     
+    });      
+   // Function to upload files (extensions) 
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const formdata = new FormData();
+      formdata.append('url', values);   
+      try {
+       var  response = await axios.post('', setValues, 
+          {headers: {'Content-Type': 'application/json',
+            }})   
+      console.log(response => setValues(response.data.status));
+        // Handle successful upload
+        toast.success('Upload successful!');
+        document.body.appendChild(response);
+      } catch (error) {
+        // Handle server errors
+        if (error.response) {
+          console.error('Server error:', error.response.data);
+          toast.error(error.response.data.message || 'Upload failed'); 
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.error('Network error:', error.request);
+          toast.error('Network error. Please try again.');
+        } else {
+          //request Error
+          console.error('Error:', error.message);
+          toast.error('An unexpected error occurred.');
+        }
+      }
+    }   
     return(
         <Container>
             {/* Navbar*/}
