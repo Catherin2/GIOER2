@@ -19,12 +19,12 @@ function Upload(){
       const formdata = new FormData();
       formdata.append('url', values);   
       try {
-       var  response = await axios.post('', setValues, 
+       var  response = await axios.post('https://nestjs-g2fpc8bchsf0gyhy.canadacentral-01.azurewebsites.net/api/file/upload', setValues, 
           {headers: {'Content-Type': 'application/json',
             }})   
       console.log(response => setValues(response.data.status));
         // Handle successful upload
-        toast.success('Upload successful!');
+        toast.success(response.data.message || 'Upload successful!');
         document.body.appendChild(response);
       } catch (error) {
         // Handle server errors

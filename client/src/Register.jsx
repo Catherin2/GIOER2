@@ -20,7 +20,7 @@ const Register = () => {
         }) 
       console.log(response.data);
       // Handle successful registration
-      toast.success('Registration successful!');
+      toast.success(response.data.message || 'Registration successful!');
       navigate('/login');
     } catch (error) {
       // Handle server errors

@@ -26,7 +26,10 @@ function Login(){
           }})   
         console.log(response.data);
           // Handle successful login
-          toast.success('Login successful!');
+          toast.success(response.data.message || 'Login successful!');
+          const token=response.data.token;
+         localStorage.setItem("authToken", token);
+         localStorage.setItem("keepLoggedIn", JSON.stringify(true));
           navigate('/dashboard');
         } catch (error) {
           // Handle server errors

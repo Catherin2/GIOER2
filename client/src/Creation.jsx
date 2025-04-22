@@ -27,8 +27,8 @@ function Creation(){
           }
         })   
         console.log(response.data);
-          // Handle successful registration
-          toast.success('Extension created successful!');
+          // Handle successful new extension creation
+          toast.success(response.data.message || 'Extension created successful!');
           navigate('/dashboard');        
         } catch (error) {
           // Handle server errors
