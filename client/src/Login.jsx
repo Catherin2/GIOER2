@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function Login(){
+  
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -14,17 +15,27 @@ function Login(){
       const navigate = useNavigate();
       const handleSubmit = async (e) => {
         e.preventDefault();
+        const token = sessionStorage.getItem("token");
         try {
          var  response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/users/login/', formData, 
             {headers: {'Content-Type': 'application/json',
+              data: new URLSearchParams({
+                grant_type: 'client_credentials',
+                client_id: 'YOUR_CLIENT_ID',
+                client_secret: 'YOUR_CLIENT_SECRET',
+                audience: 'YOUR_API_IDENTIFIER'
+              })
           }})   
-        console.log(response.data);
+          //save session
+          sessionStorage.setItem('accessToken',response.data.accessToken);
+          sessionStorage.setItem('isLogin?',true);
+          console.log(response.data);
           // Handle successful login
           toast.success(response.data.message || 'Login successful!');
-          const token=response.data.token;
+         const token=response.data.token;
          localStorage.setItem("authToken", token);
          localStorage.setItem("keepLoggedIn", JSON.stringify(true));
-          navigate('/dashboard');
+          navigate('/');
         } catch (error) {
           // Handle server errors
           if (error.response) {
