@@ -9,6 +9,10 @@ const Dashboard = () => {
   // get username
   const { userId } = useParams();
   const [name, setName] = useState('');
+  //value set to false means using is not logging, based in session in Logging page
+  const loginState = sessionStorage.getItem('isLogin?');
+  const [show,setShow] = useState(false || loginState);
+  //fetch data username
   useEffect(() => { 
     const fetchData = async () => {
       const token = sessionStorage.getItem("token");
@@ -45,9 +49,7 @@ const Dashboard = () => {
   } 
   fetchData(); 
   } },[]);
-  //value set to false means using is not logging, based in session in Logging page
-  const loginState = sessionStorage.getItem('isLogin?');
-  const [show,setShow] = useState(false || loginState);
+  
 
   const logout = () =>{
     sessionStorage.clear();
