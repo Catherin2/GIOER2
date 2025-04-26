@@ -21,7 +21,6 @@ function App() {
          <Navbar/>
       <Routes>
         <Route path='/' element={<Dashboard/>}></Route>
-        <Route path='/upload' element={<Upload/>}></Route>
         <Route path='/resource' element={<Resource/>}></Route>
         <Route path="/extensions/:id" element={<ExtensionDetail />}></Route>
         <Route path='/create' element={<Creation/>}></Route> 

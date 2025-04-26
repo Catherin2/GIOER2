@@ -1,7 +1,6 @@
 import React from "react";
 
 
-function Navbar(){
 
     return(
         <div className='d-flex justify-content-center py-2 shadow-sm fs-5 fw-bold'>
