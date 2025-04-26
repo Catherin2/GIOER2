@@ -18,7 +18,7 @@ const Dashboard = () => {
       const token = sessionStorage.getItem("token");
       if(!token) return navigate('/login');
       try {
-        const response = await axios.get(`${SERVER_URL}/users/${userId}`,
+      var response = await axios.get(`${SERVER_URL}/users/${userId}`,
       {headers: {'Content-Type': 'application/json',
         Authorization: {token}             	
       }}
