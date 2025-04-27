@@ -7,14 +7,14 @@ import axios from "axios";
 function Upload(){
 // State variables
 
-const [selectedFile, setSelectedFile] = useState(null);
-const[description, SetDescription] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null);
+  const[description, SetDescription] = useState('');
   const accessToken = sessionStorage.getItem('accessToken')
-  const handleFileChanges = (event) => {
-    setSelectedFile(event.target.files[0]);
+  const handleFileChanges = (e) => {
+    setSelectedFile(e.target.files[0]);
   };
 
-  const handleUpload = async () => {
+  const handleUpload = async (e) => {
     e.preventDefault();
     if (!selectedFile) {
       alert('Please select a file first!');
