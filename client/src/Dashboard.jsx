@@ -10,7 +10,6 @@ import { SERVER_URL } from './Api';
 
 
 const Dashboard = () => {
-  const [data, setData] = useState([]);
   const [currentView, setCurrentView] = useState('');
   // get username
   const { userId } = useParams();
@@ -53,7 +52,6 @@ const Dashboard = () => {
   } 
   fetchData(); 
   } },[]);
-  
 
   const logout = () =>{
     sessionStorage.clear();

@@ -5,25 +5,33 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 function Upload(){
-// State variable
-    const [values, setValues] = useState({
-    fileName: "",
-    fileUrl:"",
-    upLoadDate:""
-    });      
+// State variables
+  const [file, setFile] = useState('');
+  const[description, SetDescription] = useState('');
+  const accessToken = sessionStorage.getItem('accessToken');
+ 
+  const handleFile=(e)=>{
+    const file=e.target.files[0];
+    console.log(file);
+    if(file){
+      setFile(file)
+    }
+  }
    // Function to upload files (extensions) 
-    const handleSubmit = async (e) => {
+   
+    const handleUpload = async (e) => {
       e.preventDefault();
       const formdata = new FormData();
-      formdata.append('url', values);   
+      formdata.append('file', file);   
       try {
-       var  response = await axios.post('https://nestjs-g2fpc8bchsf0gyhy.canadacentral-01.azurewebsites.net/api/file/upload', setValues, 
+       var  response = await axios.post('https://nestjs-g2fpc8bchsf0gyhy.canadacentral-01.azurewebsites.net/api/file/upload', {file, description}, 
           {headers: {'Content-Type': 'application/json',
-            }})   
-      console.log(response => setValues(response.data.status));
+            'Authorization' : `Bearer ${accessToken}`
+            }});   
+      console.log(response => setFile(response.data.status));
         // Handle successful upload
+        
         toast.success(response.data.message || 'Upload successful!');
         document.body.appendChild(response);
       } catch (error) {
@@ -63,27 +71,27 @@ function Upload(){
                 <Col md ={9}>
                 <Card>
                 <Card.Body>
+                    
                     <h5>File Upload Form</h5>
                 </Card.Body>
                 <Card>              
-              <div>
-                <ToastContainer position="top-center" /> {/*ToastContainer */}
-                 <form onSubmit={handleSubmit}>
-     <div className="mb-3">
-    <label htmlFor="FileName" className="form-label">FileName</label>
-    <input type="text" onChange={(e) => setValues({...values, fileName: e.target.value})} required className="form-control" id="fileName" placeholder="FileName..."></input>
-     </div>
-     <div className="mb-3">
-    <label htmlFor="fileUrl" className="form-label">FileUrl</label>
-    <input type="url" onChange={(e) => setValues({...values, fileUrl: e.target.value})} required className="form-control" id="fileUrl" placeholder="FileUrl..."></input>
-     </div>
-     <div className="mb-3">
-    <label htmlFor="upLoadDate" className="form-label">UploadDate</label>
-    <input type="date" onChange={(e) => setValues({...values, upLoadDate: e.target.value})} required className="form-control" id="uploadDate"></input>
-    </div>
-    <button  className="btn btn-success rounded">Submit</button>
-    </form>
+              <div>    
+              <ToastContainer position="top-center" /> {/*ToastContainer */}
+                <div className='upload-preview-section'>
+                    <div className='upload-box'>
+                    <form onSubmit={handleUpload}>
+                  <div className="mb-3">
+                  <input type="file" onChange={handleFile} />
+                  </div>
+                  <div className="mb-3">
+                  <label htmlFor="filetext" className="form-label">Description</label>
+                 <input type="text" onChange={(e) => SetDescription(e.target.value)}  className="form-control" id="description" placeholder="Description..."/>
+                   </div>
+                  <button  type="submit" className="btn btn-success rounded">Upload</button>
+                    </form>
                     </div>
+                    </div>         
+              </div>
                 </Card>
                 </Card>
                 </Col>                    

@@ -4,12 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
 
 
 function Creation(){
 // State variable
-    const [values, setValues] = useState({
+    const accessToken = sessionStorage.getItem('accessToken');
+    const [extensions, setExtensions] = useState({
         "data":{
             title: "",
     description:"",
@@ -17,19 +17,22 @@ function Creation(){
     tags:""
         }  
     });
-    const navigate = useNavigate();
+    
     // Function create new extensions
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-         var  response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/extensions', values, 
-            {headers: {'Content-Type': 'application/json'
+         var  response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/extensions', extensions, 
+            {headers: {'Content-Type': 'application/json',
+              'Authorization' : `Bearer ${accessToken}`
           }
         })   
         console.log(response.data);
           // Handle successful new extension creation
-          toast.success(response.data.message || 'Extension created successful!');
-          navigate('/dashboard');        
+          const updateExtensionsState = [...extensions, resp.data];
+                     setExtensions(updateExtensionsState);
+                     toast.success('Extension created successfully!');
+          toast.success(response.data.message || 'Extension created successful!');    
         } catch (error) {
           // Handle server errors
           if (error.response) {
@@ -50,7 +53,7 @@ function Creation(){
         <Container>
           {/* Navbar*/}
                       <Navbar bg="white m-4 nav flex-column">
-                          <Navbar.Brand> Creation Service </Navbar.Brand>
+                          <Navbar.Brand> Extension Creation Service </Navbar.Brand>
                       </Navbar>
             {/* Nav*/}
            <Row className="mt-4 bg-white">
@@ -75,20 +78,20 @@ function Creation(){
                  <form onSubmit={handleSubmit}>
     <div className="mb-3">
     <label htmlFor="title" className="form-label">Title</label>
-    <input type="text" className="form-control" id="title" placeholder="Title..." onChange={(e) => setValues({...values, title: e.target.value})} required aria-describedby="emailHelp"></input>
+    <input type="text" className="form-control" id="title" placeholder="Title..." onChange={(e) => setExtensions({...extensions, title: e.target.extension})} required aria-describedby="emailHelp"></input>
     <div id="id" className="form-text"></div>
     </div>
      <div className="mb-3">
     <label htmlFor="description" className="form-label">Description</label>
-    <input type="textarea" className="form-control" id="description" placeholder="Description..." onChange={(e) => setValues({...values, description: e.target.value})} required></input>
+    <input type="textarea" className="form-control" id="description" placeholder="Description..." onChange={(e) => setExtensions({...extensions, description: e.target.extension})} required></input>
      </div>
      <div className="mb-3">
     <label htmlFor="category" className="form-label">Category</label>
-    <input type="text" className="form-control" id="category" placeholder="Category..." onChange={(e) => setValues({...values, category: e.target.value})} required></input>
+    <input type="text" className="form-control" id="category" placeholder="Category..." onChange={(e) => setExtensions({...extensions, category: e.target.extension})} required></input>
      </div>
      <div className="mb-3">
     <label htmlFor="tags" className="form-label">Tags</label>
-    <input type="text" className="form-control" id="tags" placeholder="Tags..." onChange={(e) => setValues({...values, tags: e.target.value})} required></input>
+    <input type="text" className="form-control" id="tags" placeholder="Tags..." onChange={(e) => setExtensions({...extensions, tags: e.target.extension})} required></input>
     </div>
     <button type="submit" className="btn btn-success rounded">Submit</button>
     </form>

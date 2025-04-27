@@ -17,7 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
-  const isLoggedIn=JSON.parse(localStorage.getItem("keepLoggedIn"));
+   
   return (
     <div className='App'>
       <BrowserRouter>
@@ -32,7 +32,6 @@ function App() {
         <Route path='/register' element={<Register/>}></Route>
         <Route path='/login' element={<Login/>}></Route> 
         <Route path='/upload' element={<Upload/>}></Route>
-        <Route path='/' element={isLoggedIn?<Navigate to={"/dashboard"}/>:<Dashboard />}></Route>
         <Route path='*' component={NotFoundPage} /> {/* Catch-all route for 404s */}         
       </Routes>   
       <ToastContainer
