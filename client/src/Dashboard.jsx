@@ -2,6 +2,12 @@ import React, {useState, useEffect} from "react";
 import { Container, Row, Col, Button, Card, Navbar, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useParams} from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
+
+import { SERVER_URL } from './Api'; 
+
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
@@ -12,17 +18,15 @@ const Dashboard = () => {
   //value set to false means using is not logging, based in session in Logging page
   const loginState = sessionStorage.getItem('isLogin?');
   const [show,setShow] = useState(false || loginState);
-  //fetch data username
+  //fetch data- username, token
   useEffect(() => { 
     const fetchData = async () => {
       const token = sessionStorage.getItem("token");
       if(!token) return navigate('/login');
       try {
       var response = await axios.get(`${SERVER_URL}/users/${userId}`,
-      {headers: {'Content-Type': 'application/json',
-        Authorization: {token}             	
-      }}
-	    )
+      {headers: {Authorization: `Bearer ${token}`}                                 	
+         });
         console.log(response);
        if(response.data.valid){
         setName(response.data.username);
@@ -93,7 +97,7 @@ const Dashboard = () => {
     <Container fluid>
 
        {navBar}
-
+       <ToastContainer position="top-center" /> {/*ToastContainer */}
        <Row className="mt-3">
           {/*Sidebar */}
           <Col md={2} className="d-flex flex-column align-items-start">
@@ -126,7 +130,16 @@ const Dashboard = () => {
        <footer className="text-center mt-4 p-3 border-top">
           <img src="logo.png" alt="Logo" style={{ height: "40px" }} />
         {/* <a href="#">Home</a> | <a href="#">Contact</a> | <a href="#">Help</a>*/}
-          <p className="mt-2">GIMP_Plus 2025</p>
+        <div className="copyright">
+        &copy; Copyright{' '}
+        <strong>
+          <span>GIMP_PLUS 2025 / GIOER 2025</span>
+        </strong>
+        . All Rights Reserved
+      </div>
+      <div className="credits">
+        Design: <h8>SWE6813 GROUP 5</h8>
+      </div>
        </footer>
     </Container>
   );
