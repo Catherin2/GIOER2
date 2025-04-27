@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import {Container, Row, Col, Button, Card, Navbar, Form} from 'react-bootstrap';
+import {Container, Row, Col, Button, Card, Navbar} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 function Upload(){
 // State variables
