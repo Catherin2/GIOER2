@@ -7,49 +7,39 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Upload(){
 // State variables
-  const [file, setFile] = useState('');
-  const[description, SetDescription] = useState('');
-  const accessToken = sessionStorage.getItem('accessToken');
- 
-  const handleFile=(e)=>{
-    const file=e.target.files[0];
-    console.log(file);
-    if(file){
-      setFile(file)
+
+const [selectedFile, setSelectedFile] = useState(null);
+const[description, SetDescription] = useState('');
+  const accessToken = sessionStorage.getItem('accessToken')
+  const handleFileChanges = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleUpload = async () => {
+    e.preventDefault();
+    if (!selectedFile) {
+      alert('Please select a file first!');
+      return;
     }
-  }
-   // Function to upload files (extensions) 
-   
-    const handleUpload = async (e) => {
-      e.preventDefault();
-      const formdata = new FormData();
-      formdata.append('file', file);   
-      try {
-       var  response = await axios.post('https://nestjs-g2fpc8bchsf0gyhy.canadacentral-01.azurewebsites.net/api/file/upload', {file, description}, 
-          {headers: {'Content-Type': 'application/json',
-            'Authorization' : `Bearer ${accessToken}`
-            }});   
-      console.log(response => setFile(response.data.status));
-        // Handle successful upload
-        
-        toast.success(response.data.message || 'Upload successful!');
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+
+    try {
+      var response = await axios.post('https://nestjs-g2fpc8bchsf0gyhy.canadacentral-01.azurewebsites.net/api/file/upload', {selectedFile, description},                
+         {headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization' : `Bearer ${accessToken}`
+        },
+      });
+      console.log('File upload successful:', response.data);
         document.body.appendChild(response);
-      } catch (error) {
-        // Handle server errors
-        if (error.response) {
-          console.error('Server error:', error.response.data);
-          toast.error(error.response.data.message || 'Upload failed'); 
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.error('Network error:', error.request);
-          toast.error('Network error. Please try again.');
-        } else {
-          //request Error
-          console.error('Error:', error.message);
-          toast.error('An unexpected error occurred.');
-        }
-      }
-    }   
+      alert('File uploaded successfully!');
+    } catch (error) {
+      console.error('File upload error:', error);
+      alert('File upload failed!');
+    }
+  };
+   // Function to upload files (extensions)    
     return(
         <Container>
             {/* Navbar*/}
@@ -75,13 +65,11 @@ function Upload(){
                     <h5>File Upload Form</h5>
                 </Card.Body>
                 <Card>              
-              <div>    
-              <ToastContainer position="top-center" /> {/*ToastContainer */}
-                <div className='upload-preview-section'>
+              <div>                   <div className='upload-preview-section'>
                     <div className='upload-box'>
                     <form onSubmit={handleUpload}>
                   <div className="mb-3">
-                  <input type="file" onChange={handleFile} />
+                  <input type="file" onChange={handleFileChanges} />
                   </div>
                   <div className="mb-3">
                   <label htmlFor="filetext" className="form-label">Description</label>
