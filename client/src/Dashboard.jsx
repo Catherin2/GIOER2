@@ -14,7 +14,7 @@ const Dashboard = () => {
   const [currentView, setCurrentView] = useState('');
   // get username
   const { userId } = useParams();
-  const [name, setName] = useState('');
+  const [user, setUser] = useState('');
   //value set to false means using is not logging, based in session in Logging page
   const loginState = sessionStorage.getItem('isLogin?');
   const [show,setShow] = useState(false || loginState);
@@ -29,7 +29,7 @@ const Dashboard = () => {
          });
         console.log(response);
        if(response.data.valid){
-        setName(response.data.username);
+        setUser(response.data.username);
         toast.success(response.data.message || 'fetch username successful!');
         setData(response.data);
         setError(null);
@@ -74,7 +74,7 @@ const Dashboard = () => {
         <Navbar bg="light" className="justify-content-between p-2 border">
           <Navbar.Brand></Navbar.Brand>
           <div className="d-flex align-items-center">
-              <span className="me-3">{name.username}</span> 
+              <span className="me-3">{user.username}</span> 
               <Link to="/" className ="btn btn-secondary  btn-sm" onClick={logout}>Log out</Link>
           </div>
         </Navbar>
