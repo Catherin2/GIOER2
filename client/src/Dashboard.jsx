@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { Container, Row, Col, Button, Card, Navbar, Form } from "react-bootstrap";
+import { Container, Row, Col, Button, Card, Navbar} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useParams} from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
@@ -9,9 +9,9 @@ import axios from "axios";
 import { SERVER_URL } from './Api'; 
 
 
-const Dashboard = () => {
-  const [currentView, setCurrentView] = useState('');
-  // get username
+const Dashboard = () => { 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { userId } = useParams();
   const [user, setUser] = useState('');
   //value set to false means using is not logging, based in session in Logging page
@@ -34,6 +34,7 @@ const Dashboard = () => {
         setError(null);
       } 
       } catch (error) {
+          setLoading(false);
         {
           // Handle server errors
           if (error.response) {
@@ -47,7 +48,7 @@ const Dashboard = () => {
             //request Error
             console.error('Error:', error.message);
             toast.error('An unexpected error occurred.');
-          }       
+          }  
     }
   } 
   fetchData(); 
@@ -72,7 +73,7 @@ const Dashboard = () => {
         <Navbar bg="light" className="justify-content-between p-2 border">
           <Navbar.Brand></Navbar.Brand>
           <div className="d-flex align-items-center">
-              <span className="me-3">{user.username}</span> 
+              <span className="username">Welcome!{user.username}</span> 
               <Link to="/" className ="btn btn-secondary  btn-sm" onClick={logout}>Log out</Link>
           </div>
         </Navbar>
@@ -85,12 +86,15 @@ const Dashboard = () => {
       </>
       if(show){
         sideBar = <>
+          <Link to="/resource" className="btn btn-secondary mb-2 w-100">Resource</Link>
+          <Link to="/search" className="btn btn-secondary mb-2 w-100">Search</Link>
           <Link to="/create" className="btn btn-secondary mb-2 w-100">Creation</Link> 
           <Link to="/download" className="btn btn-secondary mb-2 w-100">Download</Link>
-          <Link to="/upload" className="btn btn-secondary mb-2 w-100">Upload</Link>
+          <Link to="/upload" className="btn btn-secondary mb-2 w-100">Upload</Link>     
         </>
       }
       
+  
   return(
     <Container fluid>
 
