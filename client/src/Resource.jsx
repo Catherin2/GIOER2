@@ -95,7 +95,7 @@ const Resource = () => {
   return (
     <Container className="mt-4">
       <h2>Resource Catalogue</h2>
-      <Link to="/dashboard" className="btn btn-secondary mb-3">
+      <Link to="/" className="btn btn-secondary mb-3">
         Back to Dashboard
       </Link>
 
