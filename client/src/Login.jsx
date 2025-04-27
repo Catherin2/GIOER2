@@ -25,7 +25,7 @@ function Login(){
                 client_secret: 'YOUR_CLIENT_SECRET',
                 audience: 'YOUR_API_IDENTIFIER'
               })
-          }})   
+          }});   
           //save session
           sessionStorage.setItem('accessToken',response.data.accessToken);
           sessionStorage.setItem('isLogin?',true);

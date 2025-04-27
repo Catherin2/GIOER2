@@ -138,7 +138,7 @@ const Dashboard = () => {
         . All Rights Reserved
       </div>
       <div className="credits">
-        Design: <h8>SWE6813 GROUP 5</h8>
+        Design: <span>SWE6813 GROUP 5</span>
       </div>
        </footer>
     </Container>
