@@ -29,7 +29,7 @@ function Creation(){
         })   
         console.log(response.data);
           // Handle successful new extension creation
-          const updateExtensionsState = [...extensions, resp.data];
+          const updateExtensionsState = [...extensions, response.data];
                      setExtensions(updateExtensionsState);
                      toast.success('Extension created successfully!');
           toast.success(response.data.message || 'Extension created successful!');    
