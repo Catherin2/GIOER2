@@ -9,16 +9,25 @@ import 'react-toastify/dist/ReactToastify.css';
 function Creation(){
 // State variable
     const accessToken = sessionStorage.getItem('accessToken');
-   
+    
    const[title, setTile] = useState('');
    const[description, setDescription] = useState('');
    const[category, setCategory] = useState('');
-   const[tag, setTag] = useState([]);
+   const[tags, setTags] = useState([]);
+
+   const tagItem = ({ tag, onRemove }) => {
+    return (
+      <div className="tag-item">
+        <span>{tag}</span>
+        <button onClick={() => onRemove(tag)}>x</button>
+      </div>
+    );
+  };
     // Function create new extensions
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-         var  response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/extensions', {title, category, description, tag}, 
+         var  response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/extensions', {title, category, description, tags}, 
             {headers: {'Content-Type': 'application/json',
               'Authorization' : `Bearer ${accessToken}`
           }
@@ -28,12 +37,12 @@ function Creation(){
           const updateExtensionsState = [...extensions, response.data];
                      setExtensions(updateExtensionsState);
                      toast.success('Extension created successfully!');
-          toast.success(response.data.message.join() || 'Extension created successful!');    
+          toast.success(response.data.message.join || 'Extension created successful!');    
         } catch (error) {
           // Handle server errors
           if (error.response) {
             console.error('Server error:', error.response.data);
-            toast.error(error.response.data.message.join() || 'Extension creation failed'); 
+            toast.error(error.response.data.message || 'Extension creation failed'); 
           } else if (error.request) {
             // The request was made but no response was received
             console.error('Network error:', error.request);
@@ -87,7 +96,7 @@ function Creation(){
      </div>
      <div className="mb-3">
     <label htmlFor="tags" className="form-label">Tags</label>
-    <input type="tags" className="form-control" id="tags" placeholder="Tags..." onChange={(e) => setTag([...e.target.value])} required></input>
+    <input type="text" className="form-control" id="tags" placeholder="Windows, MacOS, Linux..." onChange={(e) => setTags(e.target.value.split(',').map(tagItem.trim()).filter(tagItem => tagItem.length>0))} required></input>
     </div>
     <button type="submit" className="btn btn-success rounded">Submit</button>
     </form>
