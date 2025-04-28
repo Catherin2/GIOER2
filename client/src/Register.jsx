@@ -20,14 +20,14 @@ const Register = () => {
         }) 
       console.log(response.data);
       // Handle successful registration
-      toast.success(response.data.message.join() || 'Registration successful!');
+      toast.success(response.data.message || 'Registration successful!');
       navigate('/login');
     } catch (error) {
       // Handle server errors
       if (error.response) {
         // The request was made and the server responded with a status code
         console.error('Server error:', error.response.data);
-        toast.error(error.response.data.message.join() || 'Registration failed'); // Display server error
+        toast.error(error.response.data.message || 'Registration failed'); // Display server error
       } else if (error.request) {
         // The request was made but no response 
         console.error('Network error:', error.request);
@@ -38,6 +38,7 @@ const Register = () => {
         toast.error('An unexpected error occurred.');
       }
     }
+    
   }
   return (
     <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">    

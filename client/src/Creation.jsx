@@ -35,7 +35,7 @@ function Creation(){
         })   
         console.log(response.data);
           // Handle successful new extension creation
-          toast.success(response.data.message.join || 'Extension created successful!');    
+          toast.success(response.data.message || 'Extension created successful!');    
         } catch (error) {
           // Handle server errors
           if (error.response) {
