@@ -21,7 +21,7 @@ function Upload(){
       return;
     }
     const formData = new FormData();
-    formData.append('file', selectedFile);
+    formData.append('file', selectedFile, description);
 
     try {
       var response = await axios.post('https://nestjs-g2fpc8bchsf0gyhy.canadacentral-01.azurewebsites.net/api/file/upload', formData,                
