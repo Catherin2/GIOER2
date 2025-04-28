@@ -22,7 +22,8 @@ function Creation(){
         <button onClick={() => onRemove(tag)}>x</button>
       </div>
     );
-  };
+  }
+  
     // Function create new extensions
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,9 +35,6 @@ function Creation(){
         })   
         console.log(response.data);
           // Handle successful new extension creation
-          const updateExtensionsState = [...extensions, response.data];
-                     setExtensions(updateExtensionsState);
-                     toast.success('Extension created successfully!');
           toast.success(response.data.message.join || 'Extension created successful!');    
         } catch (error) {
           // Handle server errors
