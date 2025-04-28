@@ -14,15 +14,6 @@ function Creation(){
    const[description, setDescription] = useState('');
    const[category, setCategory] = useState('');
    const[tags, setTags] = useState([]);
-
-   const tagItem = ({ tag, onRemove }) => {
-    return (
-      <div className="tag-item">
-        <span>{tag}</span>
-        <button onClick={() => onRemove(tag)}>x</button>
-      </div>
-    );
-  }
   
     // Function create new extensions
     const handleSubmit = async (e) => {
@@ -35,7 +26,8 @@ function Creation(){
         })   
         console.log(response.data);
           // Handle successful new extension creation
-          toast.success(response.data.message || 'Extension created successful!');    
+          toast.success(response.data.message || 'Extension created successful!');
+          location.reload();          
         } catch (error) {
           // Handle server errors
           if (error.response) {
@@ -94,7 +86,7 @@ function Creation(){
      </div>
      <div className="mb-3">
     <label htmlFor="tags" className="form-label">Tags</label>
-    <input type="text" className="form-control" id="tags" placeholder="Windows, MacOS, Linux..." onChange={(e) => setTags(e.target.value.split(',').map(tagItem.trim()).filter(tagItem => tagItem.length>0))} required></input>
+    <input type="text" className="form-control" id="tags" placeholder="Windows, MacOS, Linux..." onChange={e => setTags(e.target.value.split(',').map(tagItem => tagItem.trim()).filter(tagItem => tagItem.length>0))} required></input>
     </div>
     <button type="submit" className="btn btn-success rounded">Submit</button>
     </form>
