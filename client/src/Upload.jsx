@@ -24,14 +24,14 @@ function Upload(){
     formData.append('file', selectedFile);
 
     try {
-      var response = await axios.post('https://nestjs-g2fpc8bchsf0gyhy.canadacentral-01.azurewebsites.net/api/file/upload', {selectedFile, description},                
+      var response = await axios.post('https://nestjs-g2fpc8bchsf0gyhy.canadacentral-01.azurewebsites.net/api/file/upload', formData,                
          {headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization' : `Bearer ${accessToken}`
         },
       });
       console.log('File upload successful:', response.data);
-        document.body.appendChild(response);
+      location.reload();
       alert('File uploaded successfully!');
     } catch (error) {
       console.error('File upload error:', error);
