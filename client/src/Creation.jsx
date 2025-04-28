@@ -9,20 +9,16 @@ import 'react-toastify/dist/ReactToastify.css';
 function Creation(){
 // State variable
     const accessToken = sessionStorage.getItem('accessToken');
-    const [extensions, setExtensions] = useState({
-        "data":{
-            title: "",
-    description:"",
-    category:[1],
-    tags:""
-        }  
-    });
-    
+   
+   const[title, setTile] = useState('');
+   const[description, setDescription] = useState('');
+   const[category, setCategory] = useState('');
+   const[tag, setTag] = useState([]);
     // Function create new extensions
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-         var  response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/extensions', extensions, 
+         var  response = await axios.post('https://gioer-cfc6bkewatd5angv.canadacentral-01.azurewebsites.net/api/extensions', {title, category, description, tag}, 
             {headers: {'Content-Type': 'application/json',
               'Authorization' : `Bearer ${accessToken}`
           }
@@ -32,12 +28,12 @@ function Creation(){
           const updateExtensionsState = [...extensions, response.data];
                      setExtensions(updateExtensionsState);
                      toast.success('Extension created successfully!');
-          toast.success(response.data.message || 'Extension created successful!');    
+          toast.success(response.data.message.join() || 'Extension created successful!');    
         } catch (error) {
           // Handle server errors
           if (error.response) {
             console.error('Server error:', error.response.data);
-            toast.error(error.response.data.message || 'Extension creation failed'); 
+            toast.error(error.response.data.message.join() || 'Extension creation failed'); 
           } else if (error.request) {
             // The request was made but no response was received
             console.error('Network error:', error.request);
@@ -78,20 +74,20 @@ function Creation(){
                  <form onSubmit={handleSubmit}>
     <div className="mb-3">
     <label htmlFor="title" className="form-label">Title</label>
-    <input type="text" className="form-control" id="title" placeholder="Title..." onChange={(e) => setExtensions({...extensions, title: e.target.extension})} required aria-describedby="emailHelp"></input>
+    <input type="text" className="form-control" id="title" placeholder="Title..." onChange={(e) => setTile(e.target.value)} required aria-describedby="emailHelp"></input>
     <div id="id" className="form-text"></div>
     </div>
      <div className="mb-3">
     <label htmlFor="description" className="form-label">Description</label>
-    <input type="textarea" className="form-control" id="description" placeholder="Description..." onChange={(e) => setExtensions({...extensions, description: e.target.extension})} required></input>
+    <input type="textarea" className="form-control" id="description" placeholder="Description..." onChange={(e) => setDescription(e.target.value)} required></input>
      </div>
      <div className="mb-3">
     <label htmlFor="category" className="form-label">Category</label>
-    <input type="text" className="form-control" id="category" placeholder="Category..." onChange={(e) => setExtensions({...extensions, category: e.target.extension})} required></input>
+    <input type="text" className="form-control" id="category" placeholder="Category..." onChange={(e) => setCategory(e.target.value)} required></input>
      </div>
      <div className="mb-3">
     <label htmlFor="tags" className="form-label">Tags</label>
-    <input type="text" className="form-control" id="tags" placeholder="Tags..." onChange={(e) => setExtensions({...extensions, tags: e.target.extension})} required></input>
+    <input type="tags" className="form-control" id="tags" placeholder="Tags..." onChange={(e) => setTag([...e.target.value])} required></input>
     </div>
     <button type="submit" className="btn btn-success rounded">Submit</button>
     </form>
